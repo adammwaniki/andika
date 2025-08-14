@@ -30,3 +30,12 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# Air
+.air.toml
+
+# Temporary files
+tmp/
+
+# Node modules
+node_modules/
