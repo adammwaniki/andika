@@ -1,10 +1,10 @@
 package main
 
 import (
-    "log"
-    "net/http"
+	"log"
+	"net/http"
 
-	"github.com/adammwaniki/portfolio-remix/views"
+	"github.com/adammwaniki/andika/views"
 )
 
 func main() {
@@ -13,13 +13,13 @@ func main() {
     // Route for homepage
     mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Println("Rendering Home Page")
-		views.Page().Render(r.Context(), w)
+		views.Index().Render(r.Context(), w)
     })
     
 	// Route for projects page
     mux.HandleFunc("/notes/new", func(w http.ResponseWriter, r *http.Request) {
         log.Println("Rendering New Notes Page")
-		views.AllProjects().Render(r.Context(), w)
+		views.NewNote().Render(r.Context(), w)
     })
 
     // Serve Tailwind CSS and any other assets e.g., static, public etc.
