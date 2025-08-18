@@ -90,8 +90,8 @@ func Snapshot(directory string) (string, error) {
 		return "", err
 	}
 
-	// We now serialise and save the snapshot's data to a file named after the snapshot's hash using gob
-	file, err := os.Create(fmt.Sprintf("vcs_storage/%s", hashDigest))
+	// We now serialise and save the snapshot's data
+	file, err := os.Create(filepath.Join(directory, hashDigest))
 	if err != nil {
 		return "", err
 	}
@@ -106,53 +106,49 @@ func Snapshot(directory string) (string, error) {
 	return hashDigest, nil
 }
 
-// loadSnapshot loads a snapshot's data from vcs_storage by its hash
-func LoadSnapshot(hash string) (*Snaps, error) {
+// LoadSnapshot loads a snapshot's data from a directory by its hash
+func LoadSnapshot(directory, hash string) (*Snaps, error) {
 	// Check if snapshot exists
-	snapshotPath := fmt.Sprintf("vcs_storage/%s", hash)
+	snapshotPath := filepath.Join(directory, hash)
 	if _, err := os.Stat(snapshotPath); os.IsNotExist(err) {
-		return nil, fmt.Errorf("snapshot %s does not exist", hash)
+		return nil, fmt.Errorf("snapshot %s does not exist in %s", hash, directory)
 	}
 
 	// Open the snapshot file
-	file, err := os.Open(fmt.Sprintf("vcs_storage/%s", hash)) // os.Open() also handles non-existent files, I just wanted an explicit check
+	file, err := os.Open(snapshotPath) // os.Open() also handles non-existent files, I just wanted an explicit check for nonexistent
 	if err != nil {
-		return nil, fmt.Errorf("failed to open snapshot: %w", err)
+		return nil, err
 	}
 	defer file.Close()
 
 	// Decode the gob data into a Snapshot struct
 	var snapshotData Snaps
-	decoder := gob.NewDecoder(file)
-	if err := decoder.Decode(&snapshotData); err != nil {
-		return nil, fmt.Errorf("failed to decode snapshot: %w", err)
+	if err := gob.NewDecoder(file).Decode(&snapshotData); err != nil {
+		return nil, err
 	}
 
 	return &snapshotData, nil
 }
 
-// RevertToSnapshot restores the filesystem to the state of the given snapshot.
-func RevertToSnapshot(hash string) error {
+// RevertToSnapshot restores the state of a directory to a snapshot
+func RevertToSnapshot(directory, hash string) error {
 	// Load snapshot
-	snapshotData, err := LoadSnapshot(hash)
+	snapshotData, err := LoadSnapshot(directory, hash)
 	if err != nil {
 		return err
 	}
 
 	// Restore files from snapshot deterministically
-	var restoreFiles []string
-	for f := range snapshotData.Files {
-		restoreFiles = append(restoreFiles, f)
-	}
-	sort.Strings(restoreFiles)
+	for _, f := range snapshotData.FileList {
+		content := snapshotData.Files[f]
+		path := filepath.Join(directory, f)
 
-	for _, filePath := range restoreFiles {
-		content := snapshotData.Files[filePath]
-		if err := os.MkdirAll(filepath.Dir(filePath), 0750); err != nil {
-			return fmt.Errorf("failed to create directory for %s: %w", filePath, err)
+		if err := os.MkdirAll(filepath.Dir(path), 0750); err != nil {
+			return err
 		}
-		if err := os.WriteFile(filePath, content, 0644); err != nil {
-			return fmt.Errorf("failed to write file %s: %w", filePath, err)
+
+		if err := os.WriteFile(path, content, 0644); err != nil {
+			return err
 		}
 	}
 
@@ -163,24 +159,21 @@ func RevertToSnapshot(hash string) error {
 			return err
 		}
 
-		// Skip directories and vcs_storage to avoid touching snapshot data
+		// Skip directories and //vcs_storage// to avoid touching snapshot data
 		if d.IsDir() {
-			if d.Name() == "vcs_storage" {
-				return filepath.SkipDir
-			}
+			//if d.Name() == "vcs_storage" {
+			//	return filepath.SkipDir
+			//}
 			return nil
 		}
 
 		// Using relative paths for consistency
-		relPath, err := filepath.Rel(".", path)
-		if err != nil {
-			return err
-		}
+		relPath, _ := filepath.Rel(directory, path)
 		currentFiles[relPath] = struct{}{}
 		return nil
 	})
 	if err != nil {
-		return fmt.Errorf("failed to walk current directory: %w", err)
+		return err
 	}
 
 	// Delete files not in snapshot
@@ -189,21 +182,48 @@ func RevertToSnapshot(hash string) error {
 		snapshotFiles[f] = struct{}{}
 	}
 
-	var toDelete []string
-	for filePath := range currentFiles {
-		if _, exists := snapshotFiles[filePath]; !exists {
-			toDelete = append(toDelete, filePath)
+	for file := range currentFiles {
+		if _, ok := snapshotFiles[file]; !ok {
+			path := filepath.Join(directory, file)
+			os.Remove(path)
+			fmt.Println("Removed", path)
 		}
-	}
-	sort.Strings(toDelete)
-	for _, filePath := range toDelete {
-		if err := os.Remove(filePath); err != nil {
-			fmt.Printf("Failed to remove %s: %v\n", filePath, err)
-			continue
-		}
-		fmt.Println("Removed", filePath)
 	}
 
 	fmt.Println("Reverted to snapshot", hash)
 	return nil
+}
+
+// ListSnapshots lists all snapshot hashes in a subdirectory
+func ListSnapshots(subdir string) ([]string, error) {
+	files, err := os.ReadDir(subdir)
+	if err != nil {
+		return nil, err
+	}
+
+	var snapshots []string
+	for _, f := range files {
+		if !f.IsDir() {
+			snapshots = append(snapshots, f.Name())
+		}
+	}
+	sort.Strings(snapshots)
+	return snapshots, nil
+}
+
+// ListSubdirs lists all subdirectories in vcs_storage
+func ListSubdirs() ([]string, error) {
+	files, err := os.ReadDir("vcs_storage")
+	if err != nil {
+		return nil, err
+	}
+
+	var subdirs []string
+	for _, f := range files {
+		if f.IsDir() {
+			subdirs = append(subdirs, f.Name())
+		}
+	}
+	sort.Strings(subdirs)
+	return subdirs, nil
 }
