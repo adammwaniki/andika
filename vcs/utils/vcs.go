@@ -179,3 +179,20 @@ func GetSnapshotContent(noteName, snapshotFile string) (string, error) {
 	}
 	return string(data), nil
 }
+
+// FindNoteBySnapshot finds which note contains a snapshot by hash
+func FindNoteBySnapshot(snapHash string) (string, error) {
+	notes, err := ListAllNotes()
+	if err != nil {
+		return "", err
+	}
+
+	for _, note := range notes {
+		_, vcsDir, _ := ensureDirs(note)
+		if _, err := os.Stat(filepath.Join(vcsDir, snapHash+".gob")); err == nil {
+			return note, nil
+		}
+	}
+	return "", fmt.Errorf("snapshot not found")
+}
+
