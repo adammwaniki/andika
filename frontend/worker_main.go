@@ -7,7 +7,7 @@ import (
     "path/filepath"
 
     "github.com/a-h/templ"
-    "github.com/adammwaniki/andika/views"
+    "github.com/adammwaniki/andika/frontend/views"
 )
 
 func renderPage(path string, page templ.Component) {
@@ -28,7 +28,7 @@ func renderPage(path string, page templ.Component) {
     }
 }
 
-func main() {
+func wmain() {
     // Home page
     renderPage("dist/index.html", views.Index())
 

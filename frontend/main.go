@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/adammwaniki/andika/views"
+	"github.com/adammwaniki/andika/frontend/views"
 )
 
 func main() {

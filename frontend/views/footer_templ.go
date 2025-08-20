@@ -8,7 +8,7 @@ package views
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Home() templ.Component {
+func Footer() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,6 +29,10 @@ func Home() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"bg-black sectionSize\"><div class=\"mb-4\"><img src=\"dist/assets/Logo_white.svg\" alt=\"Logo\" class=\"h-4\"></div><div class=\"flex mb-8\"><a href=\"#\"><img src=\"dist/assets/logos/Facebook.svg\" alt=\"Facebook logo\" class=\"mx-4\"></a> <a href=\"#\"><img src=\"dist/assets/logos/Youtube.svg\" alt=\"Youtube logo\" class=\"mx-4\"></a> <a href=\"#\"><img src=\"dist/assets/logos/Instagram.svg\" alt=\"Instagram logo\" class=\"mx-4\"></a> <a href=\"#\"><img src=\"dist/assets/logos/Twitter.svg\" alt=\"Twitter logo\" class=\"mx-4\"></a></div><div class=\"text-white font-montserrat text-sm\">© 2021 STARTUP. All rights reserved</div></section>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
 		return nil
 	})
 }
