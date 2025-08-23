@@ -585,25 +585,29 @@
 .andika span {
   position: absolute;
   top: 0;
-  width: 120px;
+  width: 80px;
   height: 100%;
   background: #fff;
 }
 .andika span:nth-child(1) {
   background: #B2D0EF;
   left: 0;
+  transform: rotate(14deg);
+  transform-origin: bottom left;
 }
 .andika span:nth-child(2) {
   background: #D1E5FB;
-  left: 0;
+  left: 33.3%;
+  top: 14%;
   z-index: 1;
-  rotate: 90deg;
-  transform: scaleY(1.1535);
+  transform: rotate(90deg);
   box-shadow: 0 0 40px #000000;
 }
 .andika span:nth-child(3) {
   background: #B2D0EF;
   right: 0;
+  transform: rotate(-14deg);
+  transform-origin: bottom right;
 }
 @property --tw-rotate-x {
   syntax: "*";
