@@ -28,7 +28,7 @@ func renderPage(path string, page templ.Component) {
     }
 }
 
-func main() {
+func wmain() {
     // Home page
     renderPage("dist/index.html", views.Index())
 

@@ -73,7 +73,7 @@ h3::before
 }
 .andika span:nth-child(2)
 {
-  background: #D1E5FB;
+  background: linear-gradient(135deg, #D1E5FB 30%, #B2D0EF);
   left: 41.7%;
   top: 40%;
   height: 55%;
@@ -82,7 +82,7 @@ h3::before
     rotate(90deg)
     skewY(14deg)
     scaleY(1.035);
-  box-shadow: 0 0 40px #000000;
+  box-shadow: 0 0 20px #000000;
   
 }
 .andika span:nth-child(3)
