@@ -29,7 +29,7 @@ func LoadingScreen() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"h-dvh flex justify-center items-center bg-black\"><div class=\"logo\"><div class=\"andika\"><span></span> <span></span> <span></span></div></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"h-screen flex justify-center items-center bg-black\"><div class=\"logo\"><div class=\"andika\"><span></span> <span></span> <span></span></div><h3 class=\"relative m-0 p-0 font-medium text-center uppercase text-white text-6xl tracking-[14px] overflow-hidden \">Andika</h3></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

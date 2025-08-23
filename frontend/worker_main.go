@@ -28,12 +28,12 @@ func renderPage(path string, page templ.Component) {
     }
 }
 
-func wmain() {
+func main() {
     // Home page
     renderPage("dist/index.html", views.Index())
 
     // New Notes page
-    renderPage("dist/notes/new/index.html", views.NewNote())
+    //renderPage("dist/notes/new/index.html", views.NewNote())
 
     log.Println("Static export completed!")
 }

@@ -1,6 +1,6 @@
 name = "andika"
 main = "./worker.js"  # fake entry point to suppress warnings
-compatibility_date = "2025-08-14"
+compatibility_date = "2025-08-23"
 
 # This section is required for static uploads using --assets
 [site]
