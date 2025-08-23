@@ -71,9 +71,14 @@ h3::before
     skewY(-14deg);
   transform-origin: bottom left;
 }
+@property --a
+{
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
 .andika span:nth-child(2)
 {
-  background: linear-gradient(135deg, #D1E5FB 30%, #B2D0EF);
   left: 41.7%;
   top: 40%;
   height: 55%;
@@ -82,8 +87,36 @@ h3::before
     rotate(90deg)
     skewY(14deg)
     scaleY(1.035);
-  box-shadow: 0 0 20px #000000;
-  
+  box-shadow: 0 0 10px #000000;
+  background: repeating-conic-gradient(from var(--a), #FFC727 0%,
+  #FFC727 10%, transparent 10%, transparent 50%);
+  animation: zunguka 6s linear infinite;
+}
+@keyframes zunguka 
+{
+  0%
+  {
+    --a: 0deg
+  }
+  100%
+  {
+    --a: 360deg
+  }
+}
+.andika span:nth-child(2)::before
+{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.andika span:nth-child(2)::after
+{
+  content: '';
+  position: absolute;
+  inset: 0.7px;
+  background: linear-gradient(135deg, #D1E5FB 30%, #B2D0EF);
+
 }
 .andika span:nth-child(3)
 {
