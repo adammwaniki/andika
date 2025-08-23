@@ -597,8 +597,8 @@
   background: #D1E5FB;
   left: 0;
   z-index: 1;
-  transform-origin: top left;
-  transform: skewX(24.8deg);
+  rotate: 90deg;
+  transform: scaleY(1.1535);
   box-shadow: 0 0 40px #000000;
 }
 .andika span:nth-child(3) {
