@@ -6,3 +6,40 @@
 :root {
     --font-ubuntu: "Ubuntu", sans-serif; 
 }
+
+/* Loading Screen */
+.andika
+{
+  position: relative;
+  width: 360px;
+  height: 520px;
+  overflow: hidden;
+}
+
+.andika span
+{
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  background: #fff;
+}
+.andika span:nth-child(1)
+{
+  background: #B2D0EF;
+  left: 0;
+}
+.andika span:nth-child(2)
+{
+  background: #D1E5FB;
+  left: 0;
+  z-index: 1;
+  transform-origin: top left;
+  transform: skewX(24.8deg);
+  box-shadow: 0 0 40px #000000;
+}
+.andika span:nth-child(3)
+{
+  background: #B2D0EF;
+  right: 0;
+}
