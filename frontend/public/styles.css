@@ -682,7 +682,7 @@
 .andika span:nth-child(2)::after {
   content: '';
   position: absolute;
-  inset: 0.7px;
+  inset: 2px;
   background: linear-gradient(135deg, #D1E5FB 30%, #B2D0EF);
 }
 .andika span:nth-child(3) {

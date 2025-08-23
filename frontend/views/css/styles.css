@@ -114,7 +114,7 @@ h3::before
 {
   content: '';
   position: absolute;
-  inset: 0.7px;
+  inset: 2px;
   background: linear-gradient(135deg, #D1E5FB 30%, #B2D0EF);
 
 }
