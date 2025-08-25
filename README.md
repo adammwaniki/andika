@@ -19,7 +19,6 @@ Below is a chart of the endpoints that exist in the current project and how they
 
 ### CLI <-> API Mapping
 
-```json
 | CLI Command                                   | HTTP Method     | Endpoint                      | Request Body                                   | Response                                                           |
 | --------------------------------------------- | --------------- | ----------------------------- | ---------------------------------------------- | ------------------------------------------------------------------ |
 | `create <file>`                               | `POST`          | `/notes/{noteName}`           | `{ "content": "string" }`                      | `{ "message": "note created", "hash": "..." }`                     |
@@ -32,8 +31,6 @@ Below is a chart of the endpoints that exist in the current project and how they
 | `snap view <snapshotHash>`                    | `GET`           | `/snapshots/{hash}`           | –                                              | `{ "noteName": "...", "content": "..." }`                          |
 | `snap restore <snapshotHash>`                 | `POST`          | `/snapshots/{hash}/restore`   | –                                              | `{ "message": "restored note", "noteName": "...", "hash": "..." }` |
 | `help`                                        | `GET`           | `/help`                       | –                                              | `{ "commands": [ ... ] }`                                          |
-
-```
 
 ### Running Locally (Quickstart)
 
