@@ -24,10 +24,12 @@ func main() {
     */
     // Serve Tailwind CSS and any other assets e.g., static, public etc.
     mux.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
-    mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+    //mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	mux.Handle("/favicon.ico", http.FileServer(http.Dir("public")))
 
 
     log.Println("Listening on http://localhost:8080")
-    http.ListenAndServe(":8080", mux)
+    if err := http.ListenAndServe("localhost:8080", mux); err != nil {
+		log.Printf("error listening: %v", err)
+	}
 }
