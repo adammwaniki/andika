@@ -3,12 +3,85 @@ package views
 templ LoadingScreen() {
     <section class="h-screen flex justify-center items-center bg-black">
         <div class="logo">
-            <div class="andika">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            @LogoBlack(false)
             <h3 class="relative m-0 p-0 font-medium text-center uppercase text-white text-6xl tracking-[14px] overflow-hidden ">Andika</h3>
         </div>
     </section>
+}
+
+templ LogoBlack(black bool ) {
+    <div class="andika">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    if black {
+        <style>
+            .andika::after,
+            .andika h3::before
+            {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, #000, #000);
+            z-index: 3;
+            animation: animate 2s linear forwards;
+            }
+            .andika::before
+            {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -100px;
+            width: 100%;
+            height: 120px;
+            background: #000;
+            z-index: 2;
+            border-top-left-radius: 100%;
+            border-top-right-radius: 100%;
+            transform: scaleX(1.5);
+            }
+        </style>
+    } else {
+        <style>
+            .andika::after,
+            .andika h3::before
+            {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, #fff, #fff);
+            z-index: 3;
+            animation: animate 2s linear forwards;
+            }
+            .andika::before
+            {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -100px;
+            width: 100%;
+            height: 120px;
+            background: #fff;
+            z-index: 2;
+            border-top-left-radius: 100%;
+            border-top-right-radius: 100%;
+            transform: scaleX(1.5);
+            }
+        </style>
+    }
+}
+
+templ LogoWhite() {
+    <div class="andikaWhite">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 }

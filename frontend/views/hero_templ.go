@@ -29,7 +29,15 @@ func Hero() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"pt-24 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-secondary\"><div class=\"md:flex-1 md:mr-10\"><h1 class=\"font-pt-serif text-5xl font-bold mb-7\">A headline for your <span class=\"bg-underline1 bg-left-bottom bg-no-repeat pb-2 bg-100%\">cool website</span></h1><p class=\"font-pt-serif font-normal mb-7\">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum harum tempore consectetur voluptas, cumque nobis laboriosam voluptatem.</p><div class=\"font-montserrat\"><button class=\"bg-black px-6 py-4 rounded-lg border-2 border-black border-solid text-white mr-2 mb-2\">Call to action</button> <button class=\"px-6 py-4 border-2 border-black border-solid rounded-lg\">Secondary action</button></div></div><div class=\"flex justify-around md:block mt-8 md:mt-0 md:flex-1\"><div class=\"relative\"><img src=\"dist/assets/Highlight1.svg\" alt=\"\" class=\"absolute -top-16 -left-10\"></div><img src=\"dist/assets/MacBook Pro.png\" alt=\"Macbook\"><div class=\"relative\"><img src=\"dist/assets/Highlight2.svg\" alt=\"\" class=\"absolute -bottom-10 -right-6\"></div></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"pt-24 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-[#EFF6F6]\"><div class=\"md:flex-1 md:mr-10\"><h1 class=\"font-pt-serif text-5xl font-bold mb-7\">Track your thoughts <span class=\"bg-left-bottom bg-no-repeat pb-2 bg-100%\">like snapshots through time</span></h1><p class=\"font-pt-serif font-normal mb-7\">A local-first productivity tool built for thinkers who do.<br>Stay organised and focused as you note and edit fearlessly.</p><div class=\"cta\"><button class=\"bg-black px-6 py-4 rounded-lg border-2 border-[#FFC727] border-solid text-white mr-2 mb-2\">Get started</button> <button class=\"px-6 py-4 border-2 border-[#FFC727] border-solid rounded-lg\">Secondary action</button></div></div><div class=\"flex justify-around items-center md:block mt-8 md:mt-0 \">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = LogoBlack(false).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
