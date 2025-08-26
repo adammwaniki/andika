@@ -5,6 +5,7 @@
 /*fonts*/
 :root {
     --font-ubuntu: "Ubuntu", sans-serif; 
+    scroll-behavior: smooth;
 }
 
 /* Loading Screen */
@@ -99,4 +100,49 @@
     rotate(-14deg)
     skewY(14deg);
   transform-origin: bottom right;
+}
+
+/* How It Works */
+.sectionSize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (min-width: 768px){
+  .sectionSize{
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1024px){
+  .sectionSize{
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+}
+
+.secondaryTitle {
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  margin-bottom: 2rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-bottom: 2rem;
+}
+
+.bg-underline2{
+  background-image: url('/images/Underline2.svg');
+}
+
+.bg-secondary{
+  --tw-bg-opacity: 1;
+  background-color: rgba(244, 242, 237, var(--tw-bg-opacity));
 }
