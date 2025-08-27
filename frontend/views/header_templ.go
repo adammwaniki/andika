@@ -67,7 +67,7 @@ func LogoName(black bool) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		if black {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div class=\"flex items-center\"><img src=\"/public/images/note-logo.svg\" alt=\"Logo\" class=\"h-8 w-8\"><h1 class=\"uppercase font-semibold text-2xl px-4\">Andika</h1></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div class=\"flex items-center\"><img src=\"images/note-logo.svg\" alt=\"Logo\" class=\"h-8 w-8\"><h1 class=\"uppercase font-semibold text-2xl px-4\">Andika</h1></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
