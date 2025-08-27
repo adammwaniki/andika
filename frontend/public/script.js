@@ -1,4 +1,5 @@
 window.addEventListener("load", function () {
+// Header Menu toggles
   console.log(document.querySelector("#showMenu"));
   document
     .querySelector("#showMenu")
@@ -12,6 +13,7 @@ window.addEventListener("load", function () {
       document.querySelector("#mobileNav").classList.add("hidden");
     });
 
+// FAQ section
   document.querySelectorAll("[toggleElement]").forEach((toggle) => {
     toggle.addEventListener("click", function (event) {
       console.log(toggle);
