@@ -33,7 +33,7 @@ func LoadingScreen() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = LogoBlack(false).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = LogoOnly().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -45,7 +45,7 @@ func LoadingScreen() templ.Component {
 	})
 }
 
-func LogoBlack(black bool) templ.Component {
+func LogoOnly() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -69,17 +69,6 @@ func LogoBlack(black bool) templ.Component {
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div class=\"andika\"><span></span> <span></span> <span></span></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
-		}
-		if black {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\n            .andika::after,\n            .andika h3::before\n            {\n            content: '';\n            position: absolute;\n            top: 0;\n            right: 0;\n            width: 400%;\n            height: 100%;\n            background: linear-gradient(to right, transparent, #000, #000);\n            z-index: 3;\n            animation: animate 2s linear forwards;\n            }\n            .andika::before\n            {\n            content: '';\n            position: absolute;\n            left: 0;\n            bottom: -100px;\n            width: 100%;\n            height: 120px;\n            background: #000;\n            z-index: 2;\n            border-top-left-radius: 100%;\n            border-top-right-radius: 100%;\n            transform: scaleX(1.5);\n            }\n        </style>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		} else {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<style>\n            .andika::after,\n            .andika h3::before\n            {\n            content: '';\n            position: absolute;\n            top: 0;\n            right: 0;\n            width: 400%;\n            height: 100%;\n            background: linear-gradient(to right, transparent, #EFF6F6, #EFF6F6);\n            z-index: 3;\n            animation: animate 2s linear forwards;\n            }\n            .andika::before\n            {\n            content: '';\n            position: absolute;\n            left: 0;\n            bottom: -100px;\n            width: 100%;\n            height: 120px;\n            background: #EFF6F6;\n            z-index: 2;\n            border-top-left-radius: 100%;\n            border-top-right-radius: 100%;\n            transform: scaleX(1.5);\n            }\n        </style>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
 		}
 		return nil
 	})
