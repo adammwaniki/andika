@@ -50,5 +50,5 @@ window.addEventListener("load", function () {
         app.classList.remove("hidden");
         app.classList.add("animate-fade-in");
         }, { once: true });
-    }, 2000);
+    }, 2800);
 });
