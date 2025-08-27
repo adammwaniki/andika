@@ -1,14 +1,14 @@
 package views
 
 templ Features() {
-    <section class="sectionSize bg-secondary">
+    <section id="features" class="sectionSize bg-[#EFF6F6]">
     <div>
       <h2 class="secondaryTitle bg-underline3 bg-100%">Features</h2>
     </div>
     <div class="md:grid md:grid-cols-2 md:grid-rows-2">
 
-      <div class="flex items-start font-montserrat my-6 mr-10">
-        <img src="../public/images/Heart.svg" alt='' class="h-7 mr-4" />
+      <div class="flex items-start my-6 mr-10">
+        <img src="/images/Heart.svg" alt='' class="h-7 mr-4" />
         <div>
           <h3 class="font-semibold text-2xl">Web & CLI Access</h3>
           <p>
@@ -17,8 +17,8 @@ templ Features() {
         </div>
       </div>
 
-      <div class="flex items-start font-montserrat my-6 mr-10">
-        <img src="../public/images/Heart.svg" alt='' class="h-7 mr-4" />
+      <div class="flex items-start my-6 mr-10">
+        <img src="/images/Heart.svg" alt='' class="h-7 mr-4" />
         <div>
           <h3 class="font-semibold text-2xl">Version Control</h3>
           <p>
@@ -27,8 +27,8 @@ templ Features() {
         </div>
       </div>
 
-      <div class="flex items-start font-montserrat my-6 mr-10">
-        <img src="../public/images/Heart.svg" alt='' class="h-7 mr-4" />
+      <div class="flex items-start my-6 mr-10">
+        <img src="/images/Heart.svg" alt='' class="h-7 mr-4" />
         <div>
           <h3 class="font-semibold text-2xl">Easy Restore</h3>
           <p>
@@ -37,8 +37,8 @@ templ Features() {
         </div>
       </div>
 
-      <div class="flex items-start font-montserrat my-6 mr-10">
-        <img src="../public/images/Heart.svg" alt='' class="h-7 mr-4" />
+      <div class="flex items-start my-6 mr-10">
+        <img src="/images/Heart.svg" alt='' class="h-7 mr-4" />
         <div>
           <h3 class="font-semibold text-2xl">List & Search Notes</h3>
           <p>
@@ -46,21 +46,6 @@ templ Features() {
           </p>
         </div>
       </div>
-      /*
-      <div class="mt-10 p-6 bg-black text-white rounded-xl shadow-lg ">
-        <h3 class="font-semibold text-2xl mb-4">Quick API Overview</h3>
-        <p class="mb-3">Here are the main API endpoints to interact with Andika notes:</p>
-        <ul class="list-disc list-inside space-y-2 text-sm">
-          <li><strong>POST /notes/{noteName}</strong> - Create a new note</li>
-          <li><strong>GET /notes/{noteName}</strong> - View latest note content</li>
-          <li><strong>PUT /notes/{noteName}</strong> - Append or overwrite note content</li>
-          <li><strong>GET /notes</strong> - List all notes</li>
-          <li><strong>GET /notes/{noteName}/snapshots</strong> - List all snapshots of a note</li>
-          <li><strong>GET /snapshots/{hash}</strong> - View snapshot content</li>
-          <li><strong>POST /snapshots/{hash}/restore</strong> - Restore a note to a snapshot</li>
-        </ul>
-      </div>
-      */
     </div>
   </section>
 }

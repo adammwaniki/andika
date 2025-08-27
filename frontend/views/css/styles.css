@@ -34,7 +34,7 @@
   top: 0;
   width: 80px;
   height: 100%;
-  background: #fff;
+  background: #000;
 }
 .andika span:nth-child(1)
 {
@@ -137,16 +137,15 @@
   padding-right: 4rem;
   padding-bottom: 2rem;
 }
-
+.bg-100\%{
+  background-size: 100%;
+}
 .bg-underline2{
   background-image: url('/images/Underline2.svg');
 }
-
-.bg-secondary{
-  --tw-bg-opacity: 1;
-  background-color: rgba(244, 242, 237, var(--tw-bg-opacity));
+.bg-underline3{
+  background-image: url('/images/Underline3.svg');
 }
-
 /* Header */
 .growing-underline {
   display: block;
@@ -172,29 +171,52 @@
 .growing-underline:focus::after {
   transform: translate3d(0, 0, 0);
 }
-@keyframes fade-in-down{
+@keyframes fade-in{
   0%{
     opacity: 0;
-    transform: translateY(-10px);
   }
 
   100%{
     opacity: 1;
-    transform: translateY(0);
   }
 }
-@-webkit-keyframes fade-in-down{
+@-webkit-keyframes fade-in{
   0%{
     opacity: 0;
-    transform: translateY(-10px);
   }
 
   100%{
     opacity: 1;
-    transform: translateY(0);
   }
 }
-.animate-fade-in-down{
-  -webkit-animation: fade-in-down 0.5s ease-out;
-          animation: fade-in-down 0.5s ease-out;
+.animate-fade-in{
+  -webkit-animation: fade-in 0.5s ease-in;
+          animation: fade-in 0.5s ease-in;
+}
+@keyframes fade-out{
+  0%{
+    opacity: 1;
+  }
+
+  100%{
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fade-out{
+  0%{
+    opacity: 1;
+  }
+
+  100%{
+    opacity: 0;
+  }
+}
+.animate-fade-out{
+  -webkit-animation: fade-out 0.35s ease-in-out;
+          animation: fade-out 0.35s ease-in-out;
+}
+
+/* Icons */
+.fa-1x {
+    font-size: 24px !important;
 }

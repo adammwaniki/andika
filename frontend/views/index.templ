@@ -7,22 +7,37 @@ templ Index() {
             <title>Andika | Note it Down</title>
             <meta charset="UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
+
+            <!--HTMX-->
             <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js" integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm" crossorigin="anonymous"></script>
+
+            <!-- Main CSS File -->
             <link rel="stylesheet" href="/styles.css">
-            <script src="/script.js"></script>
+
+            <!--Favicon-->
             <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+            <!--Icon Fonts - Font Awesome Icons-->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+
+            <!--Main script file-->
+            <script src="/script.js"></script>
         </head>
         <body>
-            @Header()    
-            <main>
-                @Hero()
-                @HowItWorks()
-                //@Features()
-                //@Pricing()
-                //@FAQs()
-                //@Footer()
-            </main>
-        //@LoadingScreen()
+            @LoadingScreen()
+            ///*
+            <div id="app" class="hidden">
+                @Header()    
+                <main>
+                    @Hero()
+                    @HowItWorks()
+                    @Features()
+                    //@Pricing()
+                    //@FAQs()
+                    @Footer()
+                </main>
+            </div>
+            //*/
         </body>
     </html>
 }

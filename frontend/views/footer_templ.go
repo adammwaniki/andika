@@ -29,7 +29,15 @@ func Footer() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"bg-black sectionSize\"><div class=\"mb-4\"><img src=\"dist/assets/Logo_white.svg\" alt=\"Logo\" class=\"h-4\"></div><div class=\"flex mb-8\"><a href=\"#\"><img src=\"dist/assets/logos/Facebook.svg\" alt=\"Facebook logo\" class=\"mx-4\"></a> <a href=\"#\"><img src=\"dist/assets/logos/Youtube.svg\" alt=\"Youtube logo\" class=\"mx-4\"></a> <a href=\"#\"><img src=\"dist/assets/logos/Instagram.svg\" alt=\"Instagram logo\" class=\"mx-4\"></a> <a href=\"#\"><img src=\"dist/assets/logos/Twitter.svg\" alt=\"Twitter logo\" class=\"mx-4\"></a></div><div class=\"text-white font-montserrat text-sm\">© 2021 STARTUP. All rights reserved</div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"bg-black sectionSize\"><div class=\"mb-4\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = LogoName(false).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div class=\"flex mb-8\"><a target=\"_blank\" title=\"Facebook\" href=\"https://www.facebook.com/\"><i class=\"fa-brands fa-facebook fa-1x mx-4\" style=\"color: #ffffff;\"></i></a> <a target=\"_blank\" title=\"TikTok\" href=\"https://www.tiktok.com/\"><i class=\"fa fa-brands fa-tiktok fa-1x mx-4\" style=\"color: #ffffff;\"></i></a> <a target=\"_blank\" title=\"Instagram\" href=\"http://www.instagram.com/\"><i class=\"fa fa-brands fa-instagram fa-1x mx-4\" style=\"color: #ffffff;\"></i></a> <a target=\"_blank\" title=\"Twitter\" href=\"http://www.x.com/\"><i class=\"fa fa-brands fa-x-twitter fa-1x mx-4\" style=\"color: #ffffff;\"></i></a></div><div class=\"text-white font-montserrat text-sm\">&#169; <script>document.write(new Date().getFullYear()+ \" \");</script>- ANDIKA | All rights reserved</div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
