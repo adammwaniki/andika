@@ -37,7 +37,7 @@ func LoadingScreen() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<h3 class=\"relative m-0 p-0 font-medium text-center uppercase text-black text-6xl tracking-[14px] overflow-hidden \">Andika</h3></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<h3 id=\"logoH3\" class=\"relative m-0 p-0 font-medium text-center uppercase text-black text-6xl tracking-[14px] overflow-hidden \">Andika</h3></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
