@@ -29,7 +29,7 @@ func Pricing(plans []Plan) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"sectionSize bg-[#EFF6F6] py-0\"><div><h2 class=\"secondaryTitle bg-underline4 mb-0 bg-100%\">Pricing</h2></div><div class=\"flex w-full flex-col md:flex-row\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"pricing\" class=\"sectionSize bg-[#EFF6F6] py-0\"><div><h2 class=\"secondaryTitle bg-underline4 mb-0 bg-100%\">Pricing</h2></div><div class=\"flex w-full flex-col md:flex-row\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -68,7 +68,7 @@ func PricingCard(title string, price string, benefits []string, offsetClass stri
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var3 = []any{"flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] rounded-2xl py-5 px-8 my-8 " + offsetClass}
+		var templ_7745c5c3_Var3 = []any{"flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] outline-solid outline-transparent outline-8 outline-offset-4 hover:outline-[#FFC727] rounded-2xl py-5 px-8 my-8 " + offsetClass}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var3...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

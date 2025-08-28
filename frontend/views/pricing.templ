@@ -1,7 +1,7 @@
 package views
 
 templ Pricing(plans []Plan) {
-  <section class="sectionSize bg-[#EFF6F6] py-0">
+  <section id="pricing" class="sectionSize bg-[#EFF6F6] py-0">
     <div>
       <h2 class="secondaryTitle bg-underline4 mb-0 bg-100%">Pricing</h2>
     </div>
@@ -15,7 +15,7 @@ templ Pricing(plans []Plan) {
 }
 
 templ PricingCard(title string, price string, benefits []string, offsetClass string) {
-	<div class={ "flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] rounded-2xl py-5 px-8 my-8 " + offsetClass }>
+	<div class={ "flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] outline-solid outline-transparent outline-8 outline-offset-4 hover:outline-[#FFC727] rounded-2xl py-5 px-8 my-8 " + offsetClass }>
 		<h3 class="font-pt-serif font-normal text-2xl mb-4">{ title }</h3>
 		<div class="font-bold text-2xl mb-4">
 			{ price }
