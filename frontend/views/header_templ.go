@@ -37,7 +37,7 @@ func Header() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<ul class=\" items-center hidden md:flex\"><li class=\"growing-underline mx-3 \"><a href=\"howitworks\">How it works</a></li><li class=\"growing-underline mx-3\"><a href=\"features\">Features</a></li><li class=\"growing-underline mx-3\"><a href=\"pricing\">Pricing</a></li></ul><div class=\" hidden md:block\"><button class=\"mr-6 cursor-pointer\">Login</button> <button class=\"py-2 px-4 text-white bg-black rounded-3xl cursor-pointer\">Signup</button></div><div id=\"showMenu\" class=\"md:hidden\"><!-- Menu open button --><button type=\"button\" aria-label=\"Open menu\" id=\"menu-toggle\"><span class=\"material-symbols-outlined text-[24px]\">menu</span></button></div></nav><div id=\"mobileNav\" class=\"hidden px-4 py-6 fixed top-0 left-0 h-full w-full bg-[#EFF6F6] z-20 animate-fade-in\"><div id=\"hideMenu\" class=\"flex justify-end\"><button type=\"button\" aria-label=\"Close menu\" id=\"menu-close\"><span class=\"material-symbols-outlined text-[24px]\">close</span></button></div><ul class=\" flex flex-col mx-8 my-24 items-center text-3xl\"><li class=\"my-6\"><a href=\"#howItWorks\">How it works</a></li><li class=\"my-6\"><a href=\"#features\">Features</a></li><li class=\"my-6\"><a href=\"#pricing\">Pricing</a></li></ul></div></header>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<ul class=\" items-center hidden md:flex\"><li class=\"growing-underline mx-3 \"><a href=\"#howItWorks\">How it works</a></li><li class=\"growing-underline mx-3\"><a href=\"#features\">Features</a></li><li class=\"growing-underline mx-3\"><a href=\"#pricing\">Pricing</a></li></ul><div class=\" hidden md:block\"><button class=\"mr-6 cursor-pointer\">Login</button> <button class=\"py-2 px-4 text-white bg-black rounded-3xl cursor-pointer\">Signup</button></div><div id=\"showMenu\" class=\"md:hidden\"><!-- Menu open button --><button type=\"button\" aria-label=\"Open menu\" id=\"menu-toggle\"><span class=\"material-symbols-outlined text-[24px]\">menu</span></button></div></nav><div id=\"mobileNav\" class=\"hidden px-4 py-6 fixed top-0 left-0 h-full w-full bg-[#EFF6F6] z-20 animate-fade-in\"><div id=\"hideMenu\" class=\"flex justify-end\"><button type=\"button\" aria-label=\"Close menu\" id=\"menu-close\"><span class=\"material-symbols-outlined text-[24px]\">close</span></button></div><ul class=\" flex flex-col mx-8 my-24 items-center text-3xl\"><li class=\"my-6\"><a href=\"#howItWorks\">How it works</a></li><li class=\"my-6\"><a href=\"#features\">Features</a></li><li class=\"my-6\"><a href=\"#pricing\">Pricing</a></li></ul></div></header>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -67,7 +67,7 @@ func LogoName(black bool) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		if black {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div class=\"flex items-center\"><img src=\"images/note-logo.svg\" alt=\"Logo\" class=\"h-8 w-8\"><h1 class=\"uppercase font-semibold text-2xl px-4\">Andika</h1></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div class=\"flex items-center\"><img src=\"/images/note-logo.svg\" alt=\"Logo\" class=\"h-8 w-8\"><h1 class=\"uppercase font-semibold text-2xl px-4\">Andika</h1></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

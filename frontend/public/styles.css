@@ -313,9 +313,6 @@
   .w-full {
     width: 100%;
   }
-  .w-screen {
-    width: 100vw;
-  }
   .flex-1 {
     flex: 1;
   }
@@ -759,6 +756,7 @@
   background-position: left bottom;
   background-repeat: no-repeat;
   font-size: 1.875rem;
+  font-weight: 600;
   line-height: 2.25rem;
   margin-bottom: 2rem;
   padding-left: 4rem;

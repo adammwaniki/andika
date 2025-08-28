@@ -8,7 +8,7 @@ package views
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Pricing() templ.Component {
+func Pricing(plans []Plan) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,7 +29,113 @@ func Pricing() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"sectionSize bg-secondary py-0\"><div><h2 class=\"secondaryTitle bg-underline4 mb-0 bg-100%\">Pricing</h2></div><div class=\"flex w-full flex-col md:flex-row\"><div class=\"flex-1 flex flex-col mx-6 shadow-2xl relative bg-secondary rounded-2xl py-5 px-8 my-8 md:top-24\"><h3 class=\"font-pt-serif font-normal text-2xl mb-4\">The Good</h3><div class=\"font-montserrat font-bold text-2xl mb-4\">$25 <span class=\"font-normal text-base\">/ month</span></div><div class=\"flex\"><img src=\"dist/assets/logos/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>Benefit #1</p></div><div class=\"flex\"><img src=\"dist/assets/logos/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>Benefit #2</p></div><div class=\"flex\"><img src=\"dist/assets/logos/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>Benefit #3</p></div><button class=\" border-2 border-solid border-black rounded-xl text-lg py-3 mt-4\">Choose plan</button></div><div class=\"flex-1 flex flex-col mx-6 shadow-2xl relative bg-secondary rounded-2xl py-5 px-8 my-8 md:top-12\"><h3 class=\"font-pt-serif font-normal text-2xl mb-4\">The Bad</h3><div class=\"font-montserrat font-bold text-2xl mb-4\">$40 <span class=\"font-normal text-base\">/ month</span></div><div class=\"flex\"><img src=\"dist/assets/logos/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>Benefit #1</p></div><div class=\"flex\"><img src=\"dist/assets/logos/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>Benefit #2</p></div><div class=\"flex\"><img src=\"dist/assets/logos/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>Benefit #3</p></div><button class=\" border-2 border-solid border-black rounded-xl text-lg py-3 mt-4\">Choose plan</button></div><div class=\"flex-1 flex flex-col mx-6 shadow-2xl relative bg-secondary rounded-2xl py-5 px-8 my-8 md:top-24\"><h3 class=\"font-pt-serif font-normal text-2xl mb-4\">The Ugly</h3><div class=\"font-montserrat font-bold text-2xl mb-4\">$50 <span class=\"font-normal text-base\">/ month</span></div><div class=\"flex\"><img src=\"dist/assets/logos/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>Benefit #1</p></div><div class=\"flex\"><img src=\"dist/assets/logos/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>Benefit #2</p></div><div class=\"flex\"><img src=\"dist/assets/logos/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>Benefit #3</p></div><button class=\" border-2 border-solid border-black rounded-xl text-lg py-3 mt-4\">Choose plan</button></div></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"sectionSize bg-[#EFF6F6] py-0\"><div><h2 class=\"secondaryTitle bg-underline4 mb-0 bg-100%\">Pricing</h2></div><div class=\"flex w-full flex-col md:flex-row\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for _, plan := range plans {
+			templ_7745c5c3_Err = PricingCard(plan.Title, plan.Price, plan.Benefits, plan.OffsetClass).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div></section>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func PricingCard(title string, price string, benefits []string, offsetClass string) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var2 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var2 == nil {
+			templ_7745c5c3_Var2 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		var templ_7745c5c3_Var3 = []any{"flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] rounded-2xl py-5 px-8 my-8 " + offsetClass}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var3...)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div class=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var4 string
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var3).String())
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/pricing.templ`, Line: 1, Col: 0}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\"><h3 class=\"font-pt-serif font-normal text-2xl mb-4\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var5 string
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/pricing.templ`, Line: 19, Col: 61}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</h3><div class=\"font-bold text-2xl mb-4\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var6 string
+		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(price)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/pricing.templ`, Line: 21, Col: 10}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, " <span class=\"font-normal text-base\">/ month</span></div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for _, benefit := range benefits {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<div class=\"flex\"><img src=\"/images/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var7 string
+			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(benefit)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/pricing.templ`, Line: 29, Col: 16}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</p></div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<button class=\"border-2 border-solid border-[#FFC727] rounded-xl text-lg py-3 mt-4 hover:bg-white \">Choose plan</button></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

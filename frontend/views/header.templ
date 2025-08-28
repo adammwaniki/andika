@@ -6,15 +6,15 @@ templ Header() {
         @LogoName(true)
         <ul class=" items-center hidden md:flex">
           <li class="growing-underline mx-3 ">
-            <a href="howitworks">
+            <a href="#howItWorks">
               How it works
             </a>
           </li>
           <li class="growing-underline mx-3">
-            <a href="features">Features</a>
+            <a href="#features">Features</a>
           </li>
           <li class="growing-underline mx-3">
-            <a href="pricing">Pricing</a>
+            <a href="#pricing">Pricing</a>
           </li>
         </ul>
         <div class=" hidden md:block">
@@ -55,7 +55,7 @@ templ Header() {
 templ LogoName(black bool) {
   if black {
     <div class="flex items-center">
-      <img src="images/note-logo.svg" alt="Logo" class="h-8 w-8" />
+      <img src="/images/note-logo.svg" alt="Logo" class="h-8 w-8" />
       <h1 class="uppercase font-semibold text-2xl px-4">Andika</h1>
     </div>
   } else {
