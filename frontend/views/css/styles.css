@@ -168,6 +168,9 @@ animation: animate 2s linear forwards;
 .bg-100\%{
   background-size: 100%;
 }
+.bg-center{
+  background-position: center;
+}
 .bg-underline2{
   background-image: url('/images/Underline2.svg');
 }
@@ -176,6 +179,9 @@ animation: animate 2s linear forwards;
 }
 .bg-underline4{
   background-image: url('/images/Underline4.svg');
+}
+.bg-highlight3{
+  background-image: url('/images/Highlight3.svg');
 }
 
 /* Header */
