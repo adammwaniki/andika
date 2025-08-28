@@ -10,19 +10,19 @@ type Plan struct {
 // Capital P because it needs to be exportable
 var Plans = []Plan{
 	{
-		Title:    		"Chini",
+		Title:    		"Students",
 		Price:    		"$TBA",
 		Benefits: 		[]string{"Okane", "Kasegu", "Orera wa suta"},
 		OffsetClass:   	"md:top-24",
 	},
 	{
-		Title:    		"Katikati",
+		Title:    		"Bei ya Mwananchi",
 		Price:    		"$TBA",
 		Benefits: 		[]string{"Chapo nne", "Na ndengu", "Mazee nikona njaa"},
 		OffsetClass:   	"md:top-12",
 	},
 	{
-		Title:    		"Juu",
+		Title:    		"Companies",
 		Price:    		"$TBA",
 		Benefits: 		[]string{"Patco mbili", "Chips mwitu", "Smocha kama tano"},
 		OffsetClass:   	"md:top-24",
