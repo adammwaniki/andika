@@ -1,0 +1,26 @@
+package views
+
+templ HeaderNotes() {
+    <header id="headerNotes">
+      <nav class="fixed flex justify-between py-6 w-full lg:px-48 md:px-12 px-4 content-center bg-[#EFF6F6] z-10">
+        @LogoNameOnly()
+        <div id="showMenu" class="md:hidden">
+        </div>      
+        <div id='mobileNav' class="hidden px-4 py-6 fixed top-0 left-0 h-full w-full bg-[#EFF6F6] z-20 animate-fade-in">
+          <div id="hideMenu" class="flex justify-end">
+          </div>
+        </div>
+      </nav>
+    </header>
+}
+
+templ LogoNameOnly() {
+  <div class="flex items-center">
+    <a href="/">
+      <img src="/images/note-logo.svg" alt="Logo" class="h-8 w-8" />
+    </a>
+    <h1 class="uppercase font-semibold text-2xl px-4">
+      <a href="/">Andika</a>
+    </h1>
+  </div>
+}

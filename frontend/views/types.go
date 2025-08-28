@@ -12,6 +12,11 @@ type FAQ struct {
 	Answer   string
 }
 
+type Note struct {
+	Title	string
+	Content	string
+}
+
 // Capital P because it needs to be exportable
 var Plans = []Plan{
 	{
@@ -61,3 +66,29 @@ var FAQsData = []FAQ{
 	},
 }
 
+var Notes = []Note {
+	{
+		Title:		"Awolan",
+		Content:   	"Lorem ipsum dolor sit amet,consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
+	},
+	{
+		Title:		"Uyaah",
+		Content:   	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
+	},
+	{
+		Title:		"Imithandazo sidbiuddiouisadbhabksj",
+		Content:   	"Lorem ipsum dolor sit amet,consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
+	},
+	{
+		Title:		"Siyabonga",
+		Content:   	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
+	},
+	{
+		Title:		"Eningi",
+		Content:   	"Lorem ipsum dolor sit amet,consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
+	},
+	{
+		Title:		"Moya Wasendulo",
+		Content:   	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
+	},
+}

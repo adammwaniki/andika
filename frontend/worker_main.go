@@ -33,7 +33,7 @@ func main() {
     renderPage("dist/index.html", views.Index())
 
     // New Notes page
-    //renderPage("dist/notes/new/index.html", views.NewNote())
+    renderPage("dist/notes/index.html", views.IndexNotes())
 
     log.Println("Static export completed!")
 }
