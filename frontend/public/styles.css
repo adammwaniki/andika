@@ -378,9 +378,6 @@
   .border-\[\#FFC727\] {
     border-color: #FFC727;
   }
-  .border-black {
-    border-color: var(--color-black);
-  }
   .bg-\[\#EFF6F6\] {
     background-color: #EFF6F6;
   }
@@ -771,6 +768,9 @@
 }
 .bg-underline3 {
   background-image: url('/images/Underline3.svg');
+}
+.bg-underline4 {
+  background-image: url('/images/Underline4.svg');
 }
 .growing-underline {
   display: block;
