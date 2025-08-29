@@ -295,6 +295,9 @@
   .hidden {
     display: none;
   }
+  .inline {
+    display: inline;
+  }
   .h-7 {
     height: calc(var(--spacing) * 7);
   }
@@ -333,6 +336,9 @@
   }
   .cursor-pointer {
     cursor: pointer;
+  }
+  .resize {
+    resize: both;
   }
   .flex-col {
     flex-direction: column;
@@ -545,14 +551,34 @@
   .outline-transparent {
     outline-color: transparent;
   }
+  .transition {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
   .transition-transform {
     transition-property: transform, translate, scale, rotate;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .outline-none {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
   .outline-solid {
     --tw-outline-style: solid;
     outline-style: solid;
+  }
+  .focus-within\:outline-2 {
+    &:focus-within {
+      outline-style: var(--tw-outline-style);
+      outline-width: 2px;
+    }
+  }
+  .focus-within\:outline-\[\#d9d9d9\] {
+    &:focus-within {
+      outline-color: #d9d9d9;
+    }
   }
   .hover\:bg-gray-700 {
     &:hover {
@@ -568,10 +594,25 @@
       }
     }
   }
+  .hover\:outline {
+    &:hover {
+      @media (hover: hover) {
+        outline-style: var(--tw-outline-style);
+        outline-width: 1px;
+      }
+    }
+  }
   .hover\:outline-\[\#FFC727\] {
     &:hover {
       @media (hover: hover) {
         outline-color: #FFC727;
+      }
+    }
+  }
+  .hover\:outline-\[\#d9d9d9\] {
+    &:hover {
+      @media (hover: hover) {
+        outline-color: #d9d9d9;
       }
     }
   }
@@ -618,11 +659,6 @@
   .md\:h-screen {
     @media (width >= 48rem) {
       height: 100vh;
-    }
-  }
-  .md\:min-h-screen {
-    @media (width >= 48rem) {
-      min-height: 100vh;
     }
   }
   .md\:flex-1 {
@@ -911,6 +947,11 @@
     padding-right: 3rem;
   }
 }
+@media (min-width: 768px) {
+  .sectionSizeNotes {
+    min-height: 100vh;
+  }
+}
 @media (min-width: 1024px) {
   .sectionSizeNotes {
     padding-left: 12rem;
@@ -925,6 +966,69 @@
 }
 .scrollbarHide::-webkit-scrollbar {
   display: none;
+}
+.note-card {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+  transform-origin: center;
+}
+.note-card.expanding {
+  position: fixed;
+  z-index: 50;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.note-card.expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw !important;
+  z-index: 50;
+  margin: 0;
+  padding: 2rem;
+  border-radius: 0;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.note-card.collapsing {
+  position: fixed;
+  z-index: 50;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.note-card.expanded .content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.note-card.expanded .content-textarea {
+  flex: 1;
+  min-height: 200px;
+  overflow-y: auto;
+  resize: none;
+}
+.note-card.expanded .button-area {
+  position: sticky;
+  bottom: 0;
+  background: #EFF6F6;
+  padding: 1rem 0;
+  margin-top: auto;
+  border-top: 1.2px solid #ffc7274d;
+}
+.auto-resize {
+  resize: none;
+  overflow: hidden;
+}
+.note-card.expanded .title-area {
+  margin-bottom: 0;
+}
+.note-card.expanded .title-textarea {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0;
 }
 @property --tw-rotate-x {
   syntax: "*";

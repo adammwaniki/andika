@@ -29,7 +29,7 @@ func AllNotes(notes []Note) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"pricing\" class=\"sectionSizeNotes md:min-h-screen bg-[#EFF6F6]\"><div><h2 class=\"secondaryTitle bg-underlineNotes bg-100%\">Notes</h2></div><div class=\"flex w-full flex-col md:grid md:grid-cols-2 2xl:grid-cols-3\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"pricing\" class=\"sectionSizeNotes bg-[#EFF6F6]\"><div><h2 class=\"secondaryTitle bg-underlineNotes bg-100%\">Notes</h2></div><div class=\"flex w-full flex-col md:grid md:grid-cols-2 2xl:grid-cols-3\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -72,7 +72,7 @@ func CreateNote() templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div class=\"flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] outline-solid outline-[#FFC727] outline-2 outline-offset-4 hover:outline-[#FFC727] rounded-2xl py-5 px-8 my-8 \"><div class=\"flex justify-end py-4\"><i class=\"fa-solid fa-ellipsis-vertical fa-xl\"></i></div><textarea id=\"inputTitle\" class=\" font-bold text-2xl text-nowrap scrollbarHide mb-4\" rows=\"1\" placeholder=\"Enter Title...\"></textarea> <textarea id=\"inputContent\" class=\" font-normal text-base mb-4 scrollbarHide\" rows=\"4\" placeholder=\"Enter note content...\"></textarea><div class=\"flex justify-between\"><button id=\"saveNewNote\" class=\"w-1/4 border-2 border-solid border-[#FFC727] rounded-xl text-lg py-2 mt-6 hover:bg-white \">Save</button> <i class=\"fa-regular fa-trash-can fa-xl py-3 mt-10\" style=\"color: #CC0000\"></i></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div class=\"note-card flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] outline-solid outline-[#FFC727] outline-2 outline-offset-4 hover:outline-[#FFC727] rounded-2xl py-5 px-8 my-8 \"><div class=\"flex justify-end py-4\"><button type=\"button\" class=\"closeNoteBtn hidden cursor-pointer\"><i class=\"fa-solid fa-xmark fa-xl\"></i></button></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline \"><textarea id=\"inputTitle\" class=\" w-full outline-none font-bold text-2xl text-nowrap scrollbarHide mb-4\" rows=\"1\" placeholder=\"Enter Title...\"></textarea></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline flex-1 flex flex-col \"><textarea id=\"inputContent\" class=\" outline-none font-normal text-base mb-4 scrollbarHide flex-1\" rows=\"3\" placeholder=\"Start typing here...\" style=\"resize: none;\"></textarea></div><div class=\"flex justify-between\"><button id=\"saveNewNote\" class=\"w-1/4 border-2 border-solid border-[#FFC727] rounded-xl text-lg py-2 mt-6 hover:bg-white cursor-pointer \">Save</button> <button type=\"button\" class=\"trashBtn py-3 mt-10 cursor-pointer\"><i class=\"fa-regular fa-trash-can fa-xl \" style=\"color: #CC0000\"></i></button></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -101,33 +101,33 @@ func NoteCard(title string, content string) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] outline-solid outline-[#FFC727] outline-2 outline-offset-4 hover:outline-[#FFC727] rounded-2xl py-5 px-8 my-8 \"><div class=\"flex justify-end py-4\"><i class=\"fa-solid fa-ellipsis-vertical fa-xl\"></i></div><textarea class=\"font-bold text-2xl text-nowrap scrollbarHide mb-4\" rows=\"1\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"note-card flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] outline-solid outline-[#FFC727] outline-2 outline-offset-4 hover:outline-[#FFC727] rounded-2xl py-5 px-8 my-8 \"><div class=\"flex justify-end py-4\"><button type=\"button\" class=\"ellipsis-btn\"><i class=\"fa-solid fa-ellipsis-vertical fa-xl\"></i></button> <button type=\"button\" class=\"closeNoteBtn hidden cursor-pointer\"><i class=\"fa-solid fa-xmark fa-xl\"></i></button></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline \"><textarea class=\"w-full outline-none font-bold text-2xl text-nowrap scrollbarHide mb-4\" rows=\"1\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/allNotes.templ`, Line: 41, Col: 92}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/allNotes.templ`, Line: 55, Col: 117}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</textarea> <textarea class=\"font-normal text-base mb-4 scrollbarHide\" rows=\"4\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</textarea></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline flex-1 flex flex-col\"><textarea class=\"outline-none font-normal text-base mb-4 scrollbarHide flex-1 \" rows=\"3\" style=\"resize: none;\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(content)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/allNotes.templ`, Line: 43, Col: 12}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/allNotes.templ`, Line: 58, Col: 132}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</textarea><div class=\"flex justify-between\"><button id=\"saveNewNote\" class=\"w-1/4 border-2 border-solid border-[#FFC727] rounded-xl text-lg py-2 mt-6 hover:bg-white \">Save</button> <i class=\"fa-regular fa-trash-can fa-xl py-3 mt-10\" style=\"color: #CC0000\"></i></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</textarea></div><div class=\"flex justify-between\"><button class=\"saveNote w-1/4 border-2 border-solid border-[#FFC727] rounded-xl text-lg py-2 mt-6 hover:bg-white \">Save</button> <button type=\"button\" class=\"trashBtn py-3 mt-10 \"><i class=\"fa-regular fa-trash-can fa-xl \" style=\"color: #CC0000\"></i></button></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

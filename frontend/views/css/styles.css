@@ -279,6 +279,11 @@ animation: animate 2s linear forwards;
     padding-right: 3rem;
   }
 }
+@media (min-width: 768px){
+  .sectionSizeNotes{
+    min-height: 100vh;
+  }
+}
 
 @media (min-width: 1024px){
   .sectionSizeNotes{
@@ -298,4 +303,81 @@ animation: animate 2s linear forwards;
 .scrollbarHide::-webkit-scrollbar {
   display: none;
 
+}
+
+.note-card {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+  transform-origin: center;
+}
+
+.note-card.expanding {
+  position: fixed;
+  z-index: 50;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.note-card.expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw !important;
+  z-index: 50;
+  margin: 0;
+  padding: 2rem;
+  border-radius: 0;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.note-card.collapsing {
+  position: fixed;
+  z-index: 50;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Expanded note content area */
+.note-card.expanded .content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.note-card.expanded .content-textarea {
+  flex: 1;
+  min-height: 200px;
+  overflow-y: auto;
+  resize: none;
+}
+
+/* Expanded note buttons - fixed at bottom */
+.note-card.expanded .button-area {
+  position: sticky;
+  bottom: 0;
+  background: #EFF6F6;
+  padding: 1rem 0;
+  margin-top: auto;
+  border-top: 1.2px solid #ffc7274d;
+}
+
+/* Auto-resize textarea */
+.auto-resize {
+  resize: none;
+  overflow: hidden;
+}
+
+/* Title area in expanded mode */
+.note-card.expanded .title-area {
+  margin-bottom: 0;
+}
+
+.note-card.expanded .title-textarea {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0;
 }
