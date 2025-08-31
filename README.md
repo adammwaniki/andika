@@ -41,7 +41,9 @@ In your terminal, navigate to the vcs/ directory and run `air`
 Creates a new note with the provided content.
 
 Method: `POST`
+
 URL: `http://localhost:8160/notes/myNote`
+
 Body:
 
 ```json
@@ -56,7 +58,7 @@ Response (201 Created):
 {
   "message": "note created",
   "noteName": "myNote",
-  "hash": "a7f3c9b7..." 
+  "hash": "a7f3...c9b7" 
 }
 ```
 
@@ -65,7 +67,9 @@ Response (201 Created):
 User can view the contents of the given note
 
 Method: `GET`
+
 URL: `http://localhost:8160/notes/myNote`
+
 Response (200 OK):
 
 ```json
@@ -80,7 +84,9 @@ Response (200 OK):
 User can append to the given note
 
 Method: `PUT`
+
 URL: `http://localhost:8160/notes/myNote`
+
 Body:
 
 ```json
@@ -96,7 +102,7 @@ Response:
 {
   "message": "note updated",
   "noteName": "myNote",
-  "hash": "b9ac21f1..."
+  "hash": "b9ac...21f1"
 }
 ```
 
@@ -105,7 +111,9 @@ Response:
 User can overwrite the given note
 
 Method: `PUT`
+
 URL: `http://localhost:8160/notes/myNote`
+
 Body:
 
 ```json
@@ -121,7 +129,7 @@ Response:
 {
   "message": "note updated",
   "noteName": "myNote",
-  "hash": "c2de34ab..."
+  "hash": "c2de...34ab"
 }
 ```
 
@@ -130,7 +138,9 @@ Response:
 User can list all notes
 
 Method: `GET`
+
 URL: `http://localhost:8160/notes`
+
 Response (200 OK):
 
 ```json
@@ -145,14 +155,16 @@ Response (200 OK):
 User can list all snapshots of a given note in chronologically descending order
 
 Method: `GET`
+
 URL: `http://localhost:8160/notes/myNote/snapshots`
+
 Response (200 OK):
 
 ```json
 [
-  "a7f3c9b7a4.gob",
-  "b9ac21f123.gob",
-  "c2de34ab44.gob"
+  "a7f3c...9b7a4.gob",
+  "b9ac2...1f123.gob",
+  "c2de3...4ab44.gob"
 ]
 ```
 
@@ -161,14 +173,16 @@ Response (200 OK):
 User can view content of a given note snapshot
 
 Method: `GET`
-URL: `http://localhost:8160/snapshots/a7f3c9b7a4...`
+
+URL: `http://localhost:8160/snapshots/a7f3c9b7a4`
+
 Response (200 OK):
 
 ```json
 {
   "noteName": "myNote",
   "content": "Hello world, this is my first note",
-  "hash": "a7f3c9b7a4"
+  "hash": "a7f3c...9b7a4"
 }
 ```
 
@@ -177,14 +191,16 @@ Response (200 OK):
 User can restore a note to a given snapshot
 
 Method: `POST`
-URL: `http://localhost:8160/snapshots/a7f3c9b7a4/restore`
+
+URL: `http://localhost:8160/snapshots/a7f3c...9b7a4/restore`
+
 Response (200 OK):
 
 ```json
 {
   "message": "note restored",
   "noteName": "myNote",
-  "hash": "a7f3c9b7a4"
+  "hash": "a7f3c...9b7a4"
 }
 ```
 
@@ -193,7 +209,9 @@ Response (200 OK):
 Help menu for commands
 
 Method: `GET`
+
 URL: `http://localhost:8160/help`
+
 Response (200 OK):
 
 ```json
