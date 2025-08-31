@@ -178,7 +178,7 @@ animation: animate 2s linear forwards;
   background-image: url('/images/Underline3.svg');
 }
 .bg-underlineNotes{
-  background-image: url('images/Underline3.svg');
+  background-image: url('/images/Underline3.svg');
   padding-top: 24px;
 }
 .bg-underline4{
@@ -279,7 +279,7 @@ animation: animate 2s linear forwards;
     padding-right: 3rem;
   }
 }
-@media (min-width: 768px){
+@media (min-width: 360px){
   .sectionSizeNotes{
     min-height: 100vh;
   }
@@ -380,4 +380,56 @@ animation: animate 2s linear forwards;
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0;
+}
+
+textarea {
+  min-height: 1.5rem; /* Ensure minimum height */
+  line-height: 1.5;
+}
+
+/* For title textareas specifically */
+textarea[rows="1"] {
+  white-space: pre-wrap; /* Allow wrapping instead of text-nowrap */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-height: 2rem; /* Slightly larger minimum for titles */
+}
+
+/* Validation error styling */
+.title-error-message {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  animation: fadeInError 0.3s ease-in-out;
+}
+
+@keyframes fadeInError {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Textarea error state */
+textarea.error-state {
+  border: 1px solid #ef4444 !important;
+  box-shadow: 0 0 0 1px #ef4444;
+}
+
+/* Save button disabled state for better UX (optional) */
+.save-button-disabled {
+  background-color: #d1d5db;
+  color: #6b7280;
+  border-color: #d1d5db;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.save-button-disabled:hover {
+  background-color: #d1d5db !important;
 }

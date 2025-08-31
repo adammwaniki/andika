@@ -59,24 +59,161 @@ window.addEventListener("load", function () {
           } else if (appNotes) {
             appNotes.classList.remove("hidden");
             appNotes.classList.add("animate-fade-in");
+            // Initialize auto-resize after notes are visible
+            setTimeout(() => {
+              initAutoResize();
+            }, 100);
           }
         },
         { once: true }
       );
     }, 2800);
+  } else {
+    // If no loading screen, initialize immediately
+    setTimeout(() => {
+      initAutoResize();
+    }, 100);
   }
 
-  // Auto-resize textarea function
+  // Improved auto-resize textarea function
   function autoResizeTextarea(textarea) {
+    // Store the original height
+    const originalHeight = textarea.style.height;
+    
+    // Reset height to auto to get the actual scrollHeight
     textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
+    
+    // Calculate the new height based on content
+    let newHeight = textarea.scrollHeight;
+    
+    // For single-row textareas (like titles), ensure minimum height
+    if (textarea.getAttribute('rows') === '1') {
+      const lineHeight = parseInt(getComputedStyle(textarea).lineHeight) || 24;
+      newHeight = Math.max(newHeight, lineHeight);
+    }
+    
+    // Set the new height
+    textarea.style.height = newHeight + 'px';
+    
+    // If height changed significantly, trigger a reflow
+    if (Math.abs(newHeight - parseInt(originalHeight || '0')) > 5) {
+      textarea.offsetHeight; // Force reflow
+    }
+  }
+
+  // Validation helper functions
+  function showTitleValidationError(titleTextarea) {
+    // Check if error message already exists
+    const existingError = titleTextarea.parentElement.querySelector('.title-error-message');
+    if (existingError) {
+      return; // Error already showing
+    }
+    
+    // Create error message element
+    const errorMessage = document.createElement('div');
+    errorMessage.className = 'title-error-message';
+    errorMessage.textContent = 'A title is necessary in order to save';
+    
+    // Insert error message after the textarea
+    titleTextarea.parentElement.insertBefore(errorMessage, titleTextarea.nextSibling);
+    
+    // Add error state class to textarea
+    titleTextarea.classList.add('error-state');
+    
+    // Focus on the title textarea
+    titleTextarea.focus();
+  }
+  
+  function removeTitleValidationError(titleTextarea) {
+    // Remove error message if it exists
+    const errorMessage = titleTextarea.parentElement.querySelector('.title-error-message');
+    if (errorMessage) {
+      errorMessage.remove();
+    }
+    
+    // Remove error state class
+    titleTextarea.classList.remove('error-state');
+  }
+
+  // Delete note card function
+  function deleteNoteCard(noteElement) {
+    // Close expanded view if open
+    if (noteElement.classList.contains("expanded") || noteElement.classList.contains("expanding")) {
+      closeExpandedNote(noteElement);
+    }
+    
+    // Add deleting class for animation
+    noteElement.classList.add('deleting');
+    
+    // Remove from DOM after animation completes
+    setTimeout(() => {
+      noteElement.remove();
+      
+      // Here we make an API call to delete the note
+      // Extract the note ID from a data attribute or the content
+      // i.e,:
+      // const noteId = noteElement.getAttribute('data-note-id');
+      // fetch(`/api/notes/${noteId}`, { method: 'DELETE' })
+      //   .catch(error => {
+      //     console.error('Error deleting note:', error);
+      //     // Optionally show error message to user
+      //   });
+      
+      console.log('Note deleted from UI - API call will be made here');
+      
+    }, 400); // Match the CSS transition duration
+  }
+  
+  // Clear create note form function
+  function clearCreateNoteForm(createNoteElement) {
+    // Get the textareas
+    const titleTextarea = createNoteElement.querySelector('#inputTitle');
+    const contentTextarea = createNoteElement.querySelector('#inputContent');
+    
+    // Clear the values
+    if (titleTextarea) {
+      titleTextarea.value = '';
+      removeTitleValidationError(titleTextarea);
+      autoResizeTextarea(titleTextarea);
+    }
+    
+    if (contentTextarea) {
+      contentTextarea.value = '';
+      autoResizeTextarea(contentTextarea);
+    }
+    
+    // Close expanded view if open
+    if (createNoteElement.classList.contains("expanded") || createNoteElement.classList.contains("expanding")) {
+      closeExpandedNote(createNoteElement);
+    }
+    
+    // Focus on title for better UX
+    if (titleTextarea) {
+      titleTextarea.focus();
+    }
   }
 
   // Apply auto-resize to all textareas
   function initAutoResize() {
     document.querySelectorAll('textarea').forEach(textarea => {
-      autoResizeTextarea(textarea);
+      // Initial resize for textareas with content
+      if (textarea.value.trim() !== '' || textarea.textContent.trim() !== '') {
+        // Small delay to ensure proper rendering
+        setTimeout(() => {
+          autoResizeTextarea(textarea);
+        }, 10);
+      } else {
+        // For empty textareas, still set minimum height
+        autoResizeTextarea(textarea);
+      }
+      
+      // Add input listener
       textarea.addEventListener('input', () => autoResizeTextarea(textarea));
+      
+      // Add focus listener to ensure proper height
+      textarea.addEventListener('focus', () => {
+        setTimeout(() => autoResizeTextarea(textarea), 10);
+      });
     });
   }
 
@@ -87,13 +224,35 @@ window.addEventListener("load", function () {
   notes.forEach(note => {
     const closeBtn = note.querySelector(".closeNoteBtn");
     const trashBtn = note.querySelector(".trashBtn");
-    const ellipsisBtn = note.querySelector(".fa-ellipsis-vertical")?.parentElement;
+    //Ellipsis button will be used to open a menu overlay above the card it is on
+    const ellipsisBtn = note.querySelector(".fa-ellipsis")?.parentElement;
     const saveBtn = note.querySelector(".saveNote");
     const saveNewBtn = note.querySelector("#saveNewNote, [id^='save']");
 
     // Hide close button by default
     if (closeBtn && !closeBtn.classList.contains("hidden")) {
       closeBtn.classList.add("hidden");
+    }
+
+    // Initialize textareas in this note
+    const textareas = note.querySelectorAll('textarea');
+    textareas.forEach(textarea => {
+      // Ensure proper initial height
+      setTimeout(() => {
+        autoResizeTextarea(textarea);
+      }, 50);
+    });
+
+    // Add real-time validation for title textarea in CreateNote
+    const titleTextarea = note.querySelector('#inputTitle');
+    if (titleTextarea) {
+      titleTextarea.addEventListener('input', () => {
+        const titleValue = titleTextarea.value.trim();
+        if (titleValue !== '') {
+          // Remove validation error if user starts typing
+          removeTitleValidationError(titleTextarea);
+        }
+      });
     }
 
     // Expand note on click
@@ -130,11 +289,15 @@ window.addEventListener("load", function () {
     if (trashBtn) {
       trashBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        // Delete logic can be called here from the API
-        // For now, we just close the expanded view if it's open
-        if (note.classList.contains("expanded") || note.classList.contains("expanding")) {
-          closeExpandedNote(note);
+        
+        // For CreateNote card, just clear the form instead of deleting
+        if (note.querySelector('#inputTitle')) {
+          clearCreateNoteForm(note);
+          return;
         }
+        
+        // For existing notes, delete with animation
+        deleteNoteCard(note);
       });
     }
 
@@ -154,6 +317,22 @@ window.addEventListener("load", function () {
     if (saveNewBtn) {
       saveNewBtn.addEventListener("click", (e) => {
         e.stopPropagation();
+        
+        // Get the title textarea for this note
+        const titleTextarea = note.querySelector('#inputTitle');
+        if (titleTextarea) {
+          const titleValue = titleTextarea.value.trim();
+          
+          if (titleValue === '') {
+            // Show validation error
+            showTitleValidationError(titleTextarea);
+            return; // Don't proceed with save
+          } else {
+            // Remove any existing validation error
+            removeTitleValidationError(titleTextarea);
+          }
+        }
+        
         // Saving logic can be called here from the API
         // For now, we just close the expanded view if it's open
         if (note.classList.contains("expanded") || note.classList.contains("expanding")) {
@@ -205,6 +384,8 @@ window.addEventListener("load", function () {
       if (titleTextarea) {
         titleTextarea.classList.remove('title-textarea');
         titleTextarea.style.height = 'auto';
+        // Re-apply auto-resize
+        setTimeout(() => autoResizeTextarea(titleTextarea), 10);
       }
     }
 
@@ -215,6 +396,8 @@ window.addEventListener("load", function () {
         contentTextarea.classList.remove('content-textarea', 'auto-resize');
         contentTextarea.setAttribute('rows', '3');
         contentTextarea.style.height = 'auto';
+        // Re-apply auto-resize
+        setTimeout(() => autoResizeTextarea(contentTextarea), 10);
       }
     }
 
@@ -226,7 +409,7 @@ window.addEventListener("load", function () {
   // Function to expand note smoothly
   function expandNote(note) {
     const closeBtn = note.querySelector(".closeNoteBtn");
-    const ellipsisBtn = note.querySelector(".fa-ellipsis-vertical")?.parentElement;
+    const ellipsisBtn = note.querySelector(".fa-ellipsis")?.parentElement;
 
     // Get original dimensions and position
     const rect = note.getBoundingClientRect();
@@ -273,15 +456,18 @@ window.addEventListener("load", function () {
       // Restructure the note for expanded view
       restructureExpandedNote(note);
       
-      // Initialize auto-resize for textareas in expanded note
-      initAutoResize();
+      // Re-initialize auto-resize for textareas in expanded note
+      const textareas = note.querySelectorAll('textarea');
+      textareas.forEach(textarea => {
+        setTimeout(() => autoResizeTextarea(textarea), 50);
+      });
     }, 500);
   }
 
   // Function to close expanded note instantly
   function closeExpandedNote(note) {
     const closeBtn = note.querySelector(".closeNoteBtn");
-    const ellipsisBtn = note.querySelector(".fa-ellipsis-vertical")?.parentElement;
+    const ellipsisBtn = note.querySelector(".fa-ellipsis")?.parentElement;
 
     // If not expanded, just return
     if (!note.classList.contains("expanded") && !note.classList.contains("expanding")) {
@@ -329,6 +515,8 @@ window.addEventListener("load", function () {
     });
   });
 
-  // Initialize auto-resize for existing textareas
-  initAutoResize();
+  // Fallback initialization if no loading screen
+  if (!loader) {
+    initAutoResize();
+  }
 });

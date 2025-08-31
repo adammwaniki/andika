@@ -1,5 +1,7 @@
 package views
 
+import "github.com/gofrs/uuid/v5"
+
 type Plan struct {
 	Title    string
 	Price    string
@@ -13,8 +15,18 @@ type FAQ struct {
 }
 
 type Note struct {
+	ID		string
 	Title	string
 	Content	string
+}
+
+// Helper function to generate UUID or return empty string on error
+func generateUUID() string {
+	id, err := uuid.NewV4()
+	if err != nil {
+		return ""
+	}
+	return id.String()
 }
 
 // Capital P because it needs to be exportable
@@ -68,26 +80,32 @@ var FAQsData = []FAQ{
 
 var Notes = []Note {
 	{
+		ID: 		generateUUID(),
 		Title:		"Awolan",
 		Content:   	"Lorem ipsum dolor sit amet,consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
 	},
 	{
+		ID: 		generateUUID(),
 		Title:		"Uyaah",
 		Content:   	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
 	},
 	{
+		ID: 		generateUUID(),
 		Title:		"Imithandazo sidbiuddiouisadbhabksj",
 		Content:   	"Lorem ipsum dolor sit amet,consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
 	},
 	{
+		ID: 		generateUUID(),
 		Title:		"Siyabonga",
 		Content:   	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
 	},
 	{
-		Title:		"Eningi",
+		ID: 		generateUUID(),
+		Title:		"Eningi Jugemu jugemu goku no suruikire unraimatsu jugemu goku no suruikire unraimatsu",
 		Content:   	"Lorem ipsum dolor sit amet,consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
 	},
 	{
+		ID: 		generateUUID(),
 		Title:		"Moya Wasendulo",
 		Content:   	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
 	},
