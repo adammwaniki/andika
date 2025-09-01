@@ -3,7 +3,7 @@ window.addEventListener("load", function () {
   // Dev
   //const API_BASE_URL = '/api/v1';
   // Prod
-  const API_BASE_URL = 'https://andika.adamndegwa.workers.dev'
+  const API_BASE_URL = 'https://andika.adamndegwa.workers.dev/api/v1'
 
   const apiCall = async (endpoint, options = {}) => {
     const url = `${API_BASE_URL}${endpoint}`;
