@@ -1,7 +1,5 @@
-//types.go
+//frontend/views/types.go
 package views
-
-import "github.com/gofrs/uuid/v5"
 
 type Plan struct {
 	Title    string
@@ -16,18 +14,9 @@ type FAQ struct {
 }
 
 type Note struct {
-	ID      string `json:"id"`
-	Title   string `json:"title"`
-	Content string `json:"content"`
-}
-
-// Helper function to generate UUID or return empty string on error
-func generateUUID() string {
-	id, err := uuid.NewV4()
-	if err != nil {
-		return ""
-	}
-	return id.String()
+	ID      string 
+	Title   string 
+	Content string 
 }
 
 // Capital P because it needs to be exportable
@@ -76,38 +65,5 @@ var FAQsData = []FAQ{
 	{
 		Question: "What are the real-world use cases?",
 		Answer:   "Journaling, research notes, writing drafts, tracking ideas, or any workflow where you need a reliable “undo button” for text.",
-	},
-}
-
-var Notes = []Note {
-	{
-		ID: 		generateUUID(),
-		Title:		"Testing testing",
-		Content:   	"Mic check mic check 1, 2, 1, 2. \nOkay i think it works. \nWacha niwajazie mangoma motomoto na maLorem Ipsum za testing",
-	},
-	{
-		ID: 		generateUUID(),
-		Title:		"Uyaah",
-		Content:   	"Lorem ipsum dolor sit amet, \nNever gonna give you up",
-	},
-	{
-		ID: 		generateUUID(),
-		Title:		"Imithandazo ",
-		Content:   	"Lorem ipsum dolor sit amet,\nnever gonna let you down",
-	},
-	{
-		ID: 		generateUUID(),
-		Title:		"Siyabonga",
-		Content:   	"Lorem ipsum dolor sit amet, \nNever gonna run around and desert you",
-	},
-	{
-		ID: 		generateUUID(),
-		Title:		"Eningi ",
-		Content:   	"Lorem ipsum dolor sit amet,\nNever gonna make you cry,\nnever gonna say goodbye",
-	},
-	{
-		ID: 		generateUUID(),
-		Title:		"Moya Wasendulo",
-		Content:   	"Lorem ipsum dolor sit amet, \nokay okay enough lorem ipsums",
 	},
 }
