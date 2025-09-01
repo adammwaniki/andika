@@ -29,7 +29,7 @@ func IndexNotes(notes []Note) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><title>Andika | My Notes</title><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0 shrink-to-fit=no\"><!--HTMX--><script src=\"https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js\"></script><!-- Main CSS File --><link rel=\"stylesheet\" href=\"/styles.css\"><!--Favicon--><link rel=\"icon\" href=\"/images/favicon.ico\" type=\"image/x-icon\"><!--Icon Fonts - Font Awesome Icons--><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css\"><!--Main script file--><script src=\"/script.js\" defer></script></head><body>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><title>Andika | My Notes</title><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0 shrink-to-fit=no\"><!--HTMX--><script src=\"https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js\"></script><!-- Main CSS File --><link rel=\"stylesheet\" href=\"/public/styles.css\"><!--Favicon--><link rel=\"icon\" href=\"/public/images/favicon.ico\" type=\"image/x-icon\"><!--Icon Fonts - Font Awesome Icons--><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css\"><!--Main script file--><script src=\"/public/script.js\" defer></script></head><body>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

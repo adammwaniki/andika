@@ -32,7 +32,7 @@ window.addEventListener("load", function () {
     create: async (name, content) => apiCall('/notes', { method: 'POST', body: JSON.stringify({ name, content }) }),
     list: async () => apiCall('/notes'),
     get: async (id) => apiCall(`/notes/${id}`),
-    update: async (id, content, mode = 'overwrite') => apiCall(`/notes/${id}`, { method: 'PUT', body: JSON.stringify({ mode, content }) }),
+    update: async (id, data, mode = 'overwrite') => apiCall(`/notes/${id}`, { method: 'PUT', body: JSON.stringify({ mode, ...data }) }),
     delete: async (id) => apiCall(`/notes/${id}`, { method: 'DELETE' }),
   };
 
@@ -127,18 +127,45 @@ window.addEventListener("load", function () {
   // API-integrated functions (used by Save/Delete buttons)
   async function handleSaveExistingNote(noteElement) {
     const noteId = noteElement.getAttribute('data-note-id');
-    const contentTextarea = noteElement.querySelector('textarea[name="noteContent"]');
-    if (!noteId || !contentTextarea) return;
+    const titleTextarea = noteElement.querySelector('textarea[name="title"]');
+    const contentTextarea = noteElement.querySelector('textarea[name="content"]');
+    if (!noteId || !contentTextarea || !titleTextarea) return;
+
+    const title = titleTextarea.value.trim();
     const content = contentTextarea.value.trim();
+
+    // Validate title
+    if (!title) {
+      showTitleValidationError(titleTextarea);
+      return;
+    } else {
+      removeTitleValidationError(titleTextarea);
+    }
+
     try {
       const saveButton = noteElement.querySelector('.saveNote');
       saveButton.textContent = 'Saving...';
       saveButton.disabled = true;
-      await noteAPI.update(noteId, content, 'overwrite');
+
+      // HTMX PUT call
+      await noteAPI.update(noteId, { title, content }, 'overwrite');
+
+      // Show notification
       showNotification('Note updated successfully!', 'success');
-      resetAllNotesToDefault();
-    } catch (error) { console.error('Error updating note:', error); showNotification(`Error updating note: ${error.message}`, 'error'); }
-    finally { const saveButton = noteElement.querySelector('.saveNote'); if (saveButton) { saveButton.textContent = 'Save'; saveButton.disabled = false; } }
+
+      // Reset note card appearance (optional: keep expanded state if needed)
+      resetAllNotesToDefault(); 
+
+    } catch (error) {
+      console.error('Error updating note:', error);
+      showNotification(`Error updating note: ${error.message}`, 'error');
+    } finally {
+      const saveButton = noteElement.querySelector('.saveNote');
+      if (saveButton) {
+        saveButton.textContent = 'Save';
+        saveButton.disabled = false;
+      }
+    }
   }
 
   async function handleDeleteNote(noteElement) {
@@ -184,10 +211,28 @@ window.addEventListener("load", function () {
 
   document.body.addEventListener('htmx:afterSwap', (evt) => {
     const swapped = evt.detail?.elt;
-    if (swapped) {
-      swapped.querySelectorAll?.('.note-card')?.forEach(n => attachNoteHandlers(n));
-      swapped.querySelectorAll?.('textarea')?.forEach(t => { autoResizeTextarea(t); t.addEventListener('input', () => autoResizeTextarea(t)); });
-    }
+    if (!swapped) return;
+
+    // If the swapped element is a note-card
+    const notesToAttach = swapped.classList?.contains('note-card')
+      ? [swapped]
+      : Array.from(swapped.querySelectorAll('.note-card'));
+
+    notesToAttach.forEach(note => {
+      attachNoteHandlers(note);
+
+      // Apply auto-resize to all textareas in the note
+      note.querySelectorAll('textarea').forEach(textarea => {
+        autoResizeTextarea(textarea);
+        textarea.addEventListener('input', () => autoResizeTextarea(textarea));
+      });
+
+      // Optionally reapply expanded note structure if needed
+      if (note.classList.contains('expanded')) {
+        restructureExpandedNote(note);
+        note.querySelectorAll('textarea').forEach(t => autoResizeTextarea(t));
+      }
+    });
   });
 
   // Expand/close helpers

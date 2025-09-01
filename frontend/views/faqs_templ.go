@@ -47,7 +47,7 @@ func FAQs(faqs []FAQ) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div><img src=\"/images/CaretRight.svg\" alt=\"\" class=\"transform transition-transform\"></div><div answer class=\"text-sm font-extralight pb-8 hidden\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div><img src=\"/public/images/CaretRight.svg\" alt=\"\" class=\"transform transition-transform\"></div><div answer class=\"text-sm font-extralight pb-8 hidden\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

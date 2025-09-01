@@ -172,20 +172,20 @@ animation: animate 2s linear forwards;
   background-position: center;
 }
 .bg-underline2{
-  background-image: url('/images/Underline2.svg');
+  background-image: url('/public/images/Underline2.svg');
 }
 .bg-underline3{
-  background-image: url('/images/Underline3.svg');
+  background-image: url('/public/images/Underline3.svg');
 }
 .bg-underlineNotes{
-  background-image: url('/images/Underline3.svg');
+  background-image: url('/public/images/Underline3.svg');
   padding-top: 24px;
 }
 .bg-underline4{
-  background-image: url('/images/Underline4.svg');
+  background-image: url('/public/images/Underline4.svg');
 }
 .bg-highlight3{
-  background-image: url('/images/Highlight3.svg');
+  background-image: url('/public/images/Highlight3.svg');
 }
 
 /* Header */

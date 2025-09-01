@@ -117,7 +117,7 @@ func PricingCard(title string, price string, benefits []string, offsetClass stri
 			return templ_7745c5c3_Err
 		}
 		for _, benefit := range benefits {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<div class=\"flex\"><img src=\"/images/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<div class=\"flex\"><img src=\"/public/images/CheckedBox.svg\" alt=\"\" class=\"mr-1\"><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

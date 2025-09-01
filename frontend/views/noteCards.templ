@@ -46,7 +46,7 @@ templ CreateNote() {
 
 templ NoteCard(id string, title string, content string) {
     <form data-note-id={ id }
-          hx-put={"/api/notes/" + id + "/update"}
+          hx-put={"/api/notes/" + id }
           hx-trigger="submit"
           hx-target="this"
           hx-swap="outerHTML"
@@ -84,7 +84,7 @@ templ NoteCard(id string, title string, content string) {
 
             <button type="button"
                     class="trashBtn flex items-end"
-                    hx-delete={"/api/notes/" + id + "/delete"}
+                    hx-delete={"/api/v1/notes/" + id + "/delete"}
                     hx-target="closest .note-card"
                     hx-swap="outerHTML">
                 <div class="mb-2">

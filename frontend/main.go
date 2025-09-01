@@ -161,7 +161,7 @@ func main() {
 		views.IndexNotes(notes).Render(r.Context(), w)
 	})
 
-	// HTMX routes for creating notes and searching (no per-note content loading anymore)
+	// HTMX routes for creating notes and searching
 	mux.HandleFunc("/api/notes/", func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("HTMX API Request: %s %s", r.Method, r.URL.Path)
 		log.Printf("Request headers: %v", r.Header)
@@ -203,6 +203,41 @@ func main() {
 			views.NoteCard(createdNote.ID, createdNote.Name, createdNote.Content).Render(r.Context(), w)
 			return
 		}
+
+		if r.Method == "PUT" && path != "" {
+		// path is the note ID
+		noteID := path
+
+		// Parse form data from HTMX
+		if err := r.ParseForm(); err != nil {
+			http.Error(w, "Invalid form data", http.StatusBadRequest)
+			return
+		}
+		title := r.FormValue("title")
+		content := r.FormValue("content")
+
+		// Forward to backend API
+		backendURL := fmt.Sprintf("http://localhost:8160/api/v1/notes/%s", noteID)
+		payload := strings.NewReader(fmt.Sprintf(`{"name":"%s","content":"%s"}`, title, content))
+		req, err := http.NewRequest("PUT", backendURL, payload)
+		if err != nil {
+			http.Error(w, "Failed to create backend request", http.StatusInternalServerError)
+			return
+		}
+		req.Header.Set("Content-Type", "application/json")
+		client := &http.Client{}
+		resp, err := client.Do(req)
+		if err != nil {
+			http.Error(w, "Backend request failed", http.StatusInternalServerError)
+			return
+		}
+		defer resp.Body.Close()
+
+		w.WriteHeader(resp.StatusCode)
+		io.Copy(w, resp.Body)
+		return
+	}
+
 
 		// Handle search (HTMX): /api/notes/search?q=...
 		if path == "search" && r.Method == "GET" {
