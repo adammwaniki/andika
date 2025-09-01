@@ -29,7 +29,7 @@ func CreateNote() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<form id=\"create-note-form\" hx-post=\"/api/notes/create\" hx-trigger=\"submit\" hx-target=\"#notes-grid\" hx-swap=\"afterbegin\" hx-on::after-request=\"if(event.detail.successful) this.reset()\" class=\"note-card flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] outline-solid outline-[#FFC727] outline-2 outline-offset-4 hover:outline-[#FFC727] rounded-2xl py-5 px-8 my-8\"><div class=\"flex justify-end py-4\"><button type=\"button\" class=\"closeNoteBtn hidden cursor-pointer\"><i class=\"fa-solid fa-xmark fa-xl\"></i></button></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline\"><textarea id=\"inputTitle\" name=\"title\" class=\"w-full outline-none font-bold text-2xl scrollbarHide mb-4\" rows=\"1\" placeholder=\"Enter Title...\" required></textarea></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline flex-1 flex flex-col\"><textarea id=\"inputContent\" name=\"content\" class=\"outline-none font-normal text-base mb-4 scrollbarHide flex-1\" rows=\"4\" placeholder=\"Start typing here...\" style=\"resize: none;\" required></textarea></div><div class=\"flex justify-end\"><button id=\"saveNewNote\" type=\"submit\" class=\"w-1/4 border-2 border-solid border-[#FFC727] rounded-xl text-lg py-2 hover:bg-white cursor-pointer\">Save</button></div></form>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<form id=\"create-note-form\" hx-post=\"/api/v1/notes/create\" hx-trigger=\"submit\" hx-target=\"#notes-grid\" hx-swap=\"afterbegin\" hx-on::after-request=\"if(event.detail.successful) this.reset()\" class=\"note-card flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] outline-solid outline-[#FFC727] outline-2 outline-offset-4 hover:outline-[#FFC727] rounded-2xl py-5 px-8 my-8\"><div class=\"flex justify-end py-4\"><button type=\"button\" class=\"closeNoteBtn hidden cursor-pointer\"><i class=\"fa-solid fa-xmark fa-xl\"></i></button></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline\"><textarea id=\"inputTitle\" name=\"title\" class=\"w-full outline-none font-bold text-2xl scrollbarHide mb-4\" rows=\"1\" placeholder=\"Enter Title...\" required></textarea></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline flex-1 flex flex-col\"><textarea id=\"inputContent\" name=\"content\" class=\"outline-none font-normal text-base mb-4 scrollbarHide flex-1\" rows=\"4\" placeholder=\"Start typing here...\" style=\"resize: none;\" required></textarea></div><div class=\"flex justify-end\"><button id=\"saveNewNote\" type=\"submit\" class=\"w-1/4 border-2 border-solid border-[#FFC727] rounded-xl text-lg py-2 hover:bg-white cursor-pointer\">Save</button></div></form>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -76,9 +76,9 @@ func NoteCard(id string, title string, content string) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs("/api/notes/" + id + "/update")
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs("/api/v1/notes/" + id + "/update")
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/noteCards.templ`, Line: 49, Col: 48}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/noteCards.templ`, Line: 49, Col: 51}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -115,9 +115,9 @@ func NoteCard(id string, title string, content string) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
-		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs("/api/notes/" + id + "/delete")
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs("/api/v1/v1/notes/" + id + "/delete")
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/noteCards.templ`, Line: 87, Col: 61}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/noteCards.templ`, Line: 87, Col: 67}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {

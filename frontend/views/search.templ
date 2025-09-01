@@ -8,7 +8,7 @@ templ SearchBar() {
         <!-- HTMX search form: replaces #notes-grid with results -->
         <form 
             id="search-form"
-            hx-get="/api/notes/search"
+            hx-get="/api/v1/notes/search"
             hx-target="#notes-grid"
             hx-swap="innerHTML"
             class="flex items-center w-full gap-2 
