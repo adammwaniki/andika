@@ -1,4 +1,3 @@
-// backend/handler/notes.go
 package handler
 
 import (

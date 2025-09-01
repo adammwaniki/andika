@@ -1,4 +1,3 @@
-// backend/main.go
 package main
 
 import (
@@ -137,7 +136,7 @@ func main() {
 	// Mount versioned API at /api/v1/ with CORS middleware
 	mux.Handle("/api/v1/", corsMiddleware(http.StripPrefix("/api/v1", apiRouter)))
 
-	// Redirect /api/v1 → /api/v1/
+	// Redirect /api/v1 -> /api/v1/
 	mux.HandleFunc("/api/v1", func(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/api/v1/", http.StatusPermanentRedirect)
 	})

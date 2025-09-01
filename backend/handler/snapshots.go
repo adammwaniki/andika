@@ -1,4 +1,3 @@
-//backend/handler/snapshots.go
 package handler
 
 import (

@@ -1,9 +1,7 @@
 // Load API integration first
 window.addEventListener("load", function () {
   // Dev
-  //const API_BASE_URL = '/api/v1';
-  // Prod
-  const API_BASE_URL = 'https://andika.adamndegwa.workers.dev/api/v1'
+  const API_BASE_URL = '/api/v1';
 
   const apiCall = async (endpoint, options = {}) => {
     const url = `${API_BASE_URL}${endpoint}`;
@@ -253,7 +251,7 @@ window.addEventListener("load", function () {
     });
   });
 
-  // === NEW: reset all notes and Create Note form to default size ===
+  // Reset all notes and Create Note form to default size
   function resetAllNotesToDefault() {
     document.querySelectorAll('.note-card.expanded, .note-card.expanding').forEach(note => closeExpandedNote(note));
     document.querySelectorAll('.note-card textarea').forEach(textarea => {

@@ -1,14 +1,13 @@
-//frontend/views/search.templ
 package views
 
 templ SearchBar() {
     <div class="flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] 
                 outline-solid outline-[#FFC727] outline-2 outline-offset-4 
                 hover:outline-[#FFC727] rounded-2xl py-2 px-4 my-2">
-        <!-- HTMX search form: replaces #notes-grid with results -->
+        //HTMX search form: replaces #notes-grid with results -->
         <form 
             id="search-form"
-            hx-get="/api/v1/notes/search"
+            hx-get="/api/notes/search"
             hx-target="#notes-grid"
             hx-swap="innerHTML"
             class="flex items-center w-full gap-2 

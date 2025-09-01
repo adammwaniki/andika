@@ -1,4 +1,3 @@
-//frontend/worker_main.go
 package main
 
 import (

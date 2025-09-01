@@ -1,4 +1,3 @@
-//backend/handler/help.go
 package handler
 
 import (

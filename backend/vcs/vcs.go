@@ -1,4 +1,3 @@
-//backend/vcs/vcs.go
 package vcs
 
 import (

@@ -1,4 +1,3 @@
-//frontend/views/types.go
 package views
 
 type Plan struct {
