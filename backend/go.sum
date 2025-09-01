@@ -1,0 +1,4 @@
+github.com/adammwaniki/andika/vcs v0.0.0-20250831122714-e104b3f4f94d h1:kcK59kUVw+N73io6TI8C+ral7LuhLpbrXSwFQjBlT7A=
+github.com/adammwaniki/andika/vcs v0.0.0-20250831122714-e104b3f4f94d/go.mod h1:1gE+yYDFkpZx8kDVStMx9Rt638SscdG9WdIJiecU7m4=
+github.com/gofrs/uuid/v5 v5.3.2 h1:2jfO8j3XgSwlz/wHqemAEugfnTlikAYHhnqQ8Xh4fE0=
+github.com/gofrs/uuid/v5 v5.3.2/go.mod h1:CDOjlDMVAtN56jqyRUZh58JT31Tiw7/oQyEXZV+9bD8=

@@ -1,3 +1,4 @@
+//types.go
 package views
 
 import "github.com/gofrs/uuid/v5"
@@ -15,9 +16,9 @@ type FAQ struct {
 }
 
 type Note struct {
-	ID		string
-	Title	string
-	Content	string
+	ID      string `json:"id"`
+	Title   string `json:"title"`
+	Content string `json:"content"`
 }
 
 // Helper function to generate UUID or return empty string on error
@@ -87,26 +88,26 @@ var Notes = []Note {
 	{
 		ID: 		generateUUID(),
 		Title:		"Uyaah",
-		Content:   	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
+		Content:   	"Lorem ipsum dolor sit amet, \nNever gonna give you up",
 	},
 	{
 		ID: 		generateUUID(),
 		Title:		"Imithandazo ",
-		Content:   	"Lorem ipsum dolor sit amet,consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
+		Content:   	"Lorem ipsum dolor sit amet,\nnever gonna let you down",
 	},
 	{
 		ID: 		generateUUID(),
 		Title:		"Siyabonga",
-		Content:   	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
+		Content:   	"Lorem ipsum dolor sit amet, \nNever gonna run around and desert you",
 	},
 	{
 		ID: 		generateUUID(),
 		Title:		"Eningi ",
-		Content:   	"Lorem ipsum dolor sit amet,consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
+		Content:   	"Lorem ipsum dolor sit amet,\nNever gonna make you cry,\nnever gonna say goodbye",
 	},
 	{
 		ID: 		generateUUID(),
 		Title:		"Moya Wasendulo",
-		Content:   	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut scelerisque urna, eu auctor justo. Integer iaculis gravida quam pretium cursus. Vivamus eget erat velit. Curabitur sit amet gravida nibh. Nulla facilisi. Curabitur eu ultricies neque. Praesent pellentesque nisl in massa tristique porta. Suspendisse velit nunc, pellentesque a erat ac, iaculis lobortis ligula. Nunc viverra imperdiet turpis, aliquam accumsan augue pharetra non. Praesent quis justo posuere metus fringilla tempor. Aliquam non lectus ex. Duis ornare tortor dictum tempus iaculis. Cras suscipit libero ac convallis vulputate. Aliquam malesuada sapien et erat rhoncus, ut elementum turpis cursus.",
+		Content:   	"Lorem ipsum dolor sit amet, \nokay okay enough lorem ipsums",
 	},
 }
