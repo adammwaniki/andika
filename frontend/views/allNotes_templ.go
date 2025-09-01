@@ -37,11 +37,15 @@ func AllNotes(notes []Note) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div class=\"flex w-full flex-col md:grid md:grid-cols-2 2xl:grid-cols-3\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div id=\"notes-container\" class=\"flex w-full flex-col md:grid md:grid-cols-2 2xl:grid-cols-3\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = CreateNote().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div id=\"notes-grid\" class=\"contents\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -51,133 +55,7 @@ func AllNotes(notes []Note) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></section>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		return nil
-	})
-}
-
-func CreateNote() templ.Component {
-	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
-		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
-		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
-			return templ_7745c5c3_CtxErr
-		}
-		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
-		if !templ_7745c5c3_IsBuffer {
-			defer func() {
-				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err == nil {
-					templ_7745c5c3_Err = templ_7745c5c3_BufErr
-				}
-			}()
-		}
-		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var2 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var2 == nil {
-			templ_7745c5c3_Var2 = templ.NopComponent
-		}
-		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"note-card flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] outline-solid outline-[#FFC727] outline-2 outline-offset-4 hover:outline-[#FFC727] rounded-2xl py-5 px-8 my-8 \"><div class=\"flex justify-end py-4\"><button type=\"button\" class=\"closeNoteBtn hidden cursor-pointer\"><i class=\"fa-solid fa-xmark fa-xl\"></i></button></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline \"><textarea id=\"inputTitle\" class=\" w-full outline-none font-bold text-2xl scrollbarHide mb-4\" rows=\"1\" placeholder=\"Enter Title...\"></textarea></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline flex-1 flex flex-col \"><textarea id=\"inputContent\" class=\" outline-none font-normal text-base mb-4 scrollbarHide flex-1\" rows=\"4\" placeholder=\"Start typing here...\" style=\"resize: none;\"></textarea></div><div class=\"flex justify-end\"><button id=\"saveNewNote\" class=\"w-1/4 border-2 border-solid border-[#FFC727] rounded-xl text-lg py-2 hover:bg-white cursor-pointer \">Save</button></div></div>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		return nil
-	})
-}
-
-func NoteCard(id string, title string, content string) templ.Component {
-	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
-		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
-		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
-			return templ_7745c5c3_CtxErr
-		}
-		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
-		if !templ_7745c5c3_IsBuffer {
-			defer func() {
-				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err == nil {
-					templ_7745c5c3_Err = templ_7745c5c3_BufErr
-				}
-			}()
-		}
-		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var3 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var3 == nil {
-			templ_7745c5c3_Var3 = templ.NopComponent
-		}
-		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<div data-note-id=\"")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(id)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/allNotes.templ`, Line: 45, Col: 23}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\" class=\"note-card flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] outline-solid outline-[#FFC727] outline-2 outline-offset-4 hover:outline-[#FFC727] rounded-2xl py-5 px-8 my-8 \"><div class=\"flex justify-end py-4\"><button type=\"button\" class=\"ellipsis-btn\"><i class=\"fa-solid fa-ellipsis fa-xl\"></i></button> <button type=\"button\" class=\"closeNoteBtn hidden cursor-pointer\"><i class=\"fa-solid fa-xmark fa-xl\"></i></button></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline \"><textarea class=\"w-full outline-none font-bold text-2xl scrollbarHide mb-4\" rows=\"1\" name=\"noteTitle\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(title)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/allNotes.templ`, Line: 55, Col: 121}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</textarea></div><div class=\"focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline flex-1 flex flex-col\"><textarea class=\"outline-none font-normal text-base mb-6 scrollbarHide flex-1 \" rows=\"4\" style=\"resize: none;\" name=\"noteContent\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var6 string
-		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(content)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/allNotes.templ`, Line: 58, Col: 151}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</textarea></div><div class=\"flex justify-between\"><button class=\"saveNote w-1/4 border-2 border-solid border-[#FFC727] rounded-xl text-lg py-2  hover:bg-white \">Save</button> <button type=\"button\" class=\"trashBtn flex items-end \"><div class=\"mb-2\"><i class=\"fa-regular fa-trash-can fa-xl \" style=\"color: #CC0000\"></i></div></button></div></div>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		return nil
-	})
-}
-
-func SearchBar() templ.Component {
-	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
-		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
-		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
-			return templ_7745c5c3_CtxErr
-		}
-		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
-		if !templ_7745c5c3_IsBuffer {
-			defer func() {
-				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err == nil {
-					templ_7745c5c3_Err = templ_7745c5c3_BufErr
-				}
-			}()
-		}
-		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var7 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var7 == nil {
-			templ_7745c5c3_Var7 = templ.NopComponent
-		}
-		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<div class=\" flex-1 flex flex-col mx-6 shadow-2xl relative bg-[#EFF6F6] outline-solid outline-[#FFC727] outline-2 outline-offset-4 hover:outline-[#FFC727] rounded-2xl py-2 px-4 my-2 \"><div class=\"flex justify-end py-px focus-within:outline-2 focus-within:outline-[#d9d9d9] hover:outline-[#d9d9d9] hover:outline \"><input id=\"searchBar\" class=\" w-full outline-none font-normal text-base scrollbarHide pr-2\" rows=\"1\" placeholder=\"Search notes or enter hash...\"> <button type=\"button\" class=\"searchBtn cursor-pointer\"><i class=\"fa-solid fa-magnifying-glass fa-xl\" style=\"color: #a1a1a1\"></i></button></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

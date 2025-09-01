@@ -1,3 +1,4 @@
+//frontend/worker_main.go
 package main
 
 import (
@@ -33,7 +34,7 @@ func main() {
     renderPage("dist/index.html", views.Index())
 
     // New Notes page
-    renderPage("dist/notes/index.html", views.IndexNotes())
+    renderPage("dist/notes/index.html", views.IndexNotes([]views.Note{}))
 
     log.Println("Static export completed!")
 }

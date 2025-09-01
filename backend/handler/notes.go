@@ -1,4 +1,4 @@
-//backend/handler/notes.go
+// backend/handler/notes.go
 package handler
 
 import (
@@ -65,8 +65,13 @@ func CreateNoteHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Return created note including content so frontend can immediately render it
 	utils.WriteJSON(w, http.StatusCreated, response{
-		Message: "note created", ID: noteID, Name: body.Name, Hash: hash,
+		Message: "note created",
+		ID:      noteID,
+		Name:    body.Name,
+		Content: body.Content,
+		Hash:    hash,
 	})
 }
 
@@ -86,8 +91,8 @@ func ViewNoteHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	utils.WriteJSON(w, http.StatusOK, response{
-		ID: noteID,
-		Name: meta.Title,
+		ID:      noteID,
+		Name:    meta.Title,
 		Content: content,
 	})
 }
@@ -126,9 +131,9 @@ func EditNoteHandler(w http.ResponseWriter, r *http.Request) {
 	meta, _ := vcs.GetNoteMeta(noteID)
 	utils.WriteJSON(w, http.StatusOK, response{
 		Message: "note updated",
-		ID: noteID,
-		Name: meta.Title,
-		Hash: hash,
+		ID:      noteID,
+		Name:    meta.Title,
+		Hash:    hash,
 	})
 }
 
@@ -140,12 +145,18 @@ func ListNotesHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Convert NoteMeta list into response-friendly struct
+	// Convert NoteMeta list into response-friendly struct, including content
 	var resp []Note
 	for _, n := range notes {
+		content := ""
+		// Try to get latest content — ignore errors per-note
+		if c, err := vcs.GetLatestFileContent(n.ID); err == nil {
+			content = c
+		}
 		resp = append(resp, Note{
-			ID: n.ID,
-			Name: n.Title,
+			ID:      n.ID,
+			Name:    n.Title,
+			Content: content,
 		})
 	}
 
@@ -175,8 +186,43 @@ func DeleteNoteHandler(w http.ResponseWriter, r *http.Request) {
 
 	utils.WriteJSON(w, http.StatusOK, response{
 		Message: "note deleted successfully",
-		ID: noteID,
-		Name: meta.Title,
+		ID:      noteID,
+		Name:    meta.Title,
 	})
 }
 
+// GET /api/notes/search?q=...
+func SearchNotesHandler(w http.ResponseWriter, r *http.Request) {
+	query := strings.TrimSpace(r.URL.Query().Get("q"))
+	if query == "" {
+		utils.WriteJSON(w, http.StatusBadRequest, response{Error: "query parameter 'q' is required"})
+		return
+	}
+
+	notes, err := vcs.ListAllNotesMeta()
+	if err != nil {
+		utils.WriteJSON(w, http.StatusInternalServerError, response{Error: err.Error()})
+		return
+	}
+
+	var results []Note
+	q := strings.ToLower(query)
+
+	for _, n := range notes {
+		content := ""
+		if c, err := vcs.GetLatestFileContent(n.ID); err == nil {
+			content = c
+		}
+
+		if strings.Contains(strings.ToLower(n.Title), q) ||
+			strings.Contains(strings.ToLower(content), q) {
+			results = append(results, Note{
+				ID:      n.ID,
+				Name:    n.Title,
+				Content: content,
+			})
+		}
+	}
+
+	utils.WriteJSON(w, http.StatusOK, results)
+}

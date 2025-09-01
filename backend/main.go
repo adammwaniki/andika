@@ -1,3 +1,4 @@
+// backend/main.go
 package main
 
 import (
@@ -10,6 +11,28 @@ import (
 
 // ParamHandler type for handlers that need path parameters
 type ParamHandler func(w http.ResponseWriter, r *http.Request, params map[string]string)
+
+// CORS middleware
+func corsMiddleware(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        // Allow local dev and production
+        origin := r.Header.Get("Origin")
+        if origin == "http://localhost:8080" || origin == "https://andika.adamndegwa.workers.dev" {
+            w.Header().Set("Access-Control-Allow-Origin", origin)
+        }
+
+        w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+        w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+        w.Header().Set("Access-Control-Max-Age", "86400")
+
+        if r.Method == "OPTIONS" {
+            w.WriteHeader(http.StatusOK)
+            return
+        }
+
+        next.ServeHTTP(w, r)
+    })
+}
 
 // wrapper to convert ParamHandler into http.HandlerFunc
 func withParams(pattern string, h ParamHandler) http.HandlerFunc {
@@ -39,6 +62,15 @@ func main() {
 	mux := http.NewServeMux()
 	apiRouter := http.NewServeMux()
 
+	// /notes/search route MUST come before /notes/ catch-all
+	apiRouter.HandleFunc("/notes/search", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodGet {
+			handler.SearchNotesHandler(w, r)
+			return
+		}
+		http.NotFound(w, r)
+	})
+
 	// /notes collection
 	apiRouter.HandleFunc("/notes", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
@@ -54,7 +86,7 @@ func main() {
 	// /notes/{id} and nested snapshots
 	apiRouter.HandleFunc("/notes/", withParams("/notes/", func(w http.ResponseWriter, r *http.Request, params map[string]string) {
 		segments := strings.Split(strings.Trim(strings.TrimPrefix(r.URL.Path, "/notes/"), "/"), "/")
-		
+
 		// Add bounds checking
 		if len(segments) == 0 {
 			http.NotFound(w, r)
@@ -102,8 +134,8 @@ func main() {
 	// /help
 	apiRouter.HandleFunc("/help", handler.HelpHandler)
 
-	// Mount versioned API at /api/v1/
-	mux.Handle("/api/v1/", http.StripPrefix("/api/v1", apiRouter))
+	// Mount versioned API at /api/v1/ with CORS middleware
+	mux.Handle("/api/v1/", corsMiddleware(http.StripPrefix("/api/v1", apiRouter)))
 
 	// Redirect /api/v1 → /api/v1/
 	mux.HandleFunc("/api/v1", func(w http.ResponseWriter, r *http.Request) {

@@ -1,6 +1,7 @@
+//frontend/views/indexNotes.templ
 package views
 
-templ IndexNotes() {
+templ IndexNotes(notes []Note) {
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -9,7 +10,7 @@ templ IndexNotes() {
             <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
 
             <!--HTMX-->
-            <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js" integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"></script>
 
             <!-- Main CSS File -->
             <link rel="stylesheet" href="/styles.css">
@@ -20,8 +21,6 @@ templ IndexNotes() {
             <!--Icon Fonts - Font Awesome Icons-->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
             
-            <!--API integration script-->
-            //<script src="/public/api-integration.js"></script>
             <!--Main script file-->
             <script src="/script.js" defer></script>
         </head>
@@ -31,7 +30,7 @@ templ IndexNotes() {
             <div id="appNotes" class="hidden">
                 @HeaderNotes()    
                 <main>
-                    @AllNotes(Notes)
+                    @AllNotes(notes)
                 </main>
             </div>
 
