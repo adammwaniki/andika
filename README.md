@@ -12,6 +12,47 @@ This website is built using the GOTH stack:
 - Templ: an open-source HTML templating language for Go.
 - HTMX: an open-source front-end JavaScript library that gives you access to AJAX, CSS Transitions, WebSockets and Server Sent Events directly in HTML
 
+## Requirements
+
+- Go 1.24+
+- air for Go hot reload [air](`go install github.com/cosmtrek/air@latest`)
+
+## Quickstart
+
+Fork this project
+
+Clone it onto your device
+
+```bash
+git clone git@github.com:your-username/andika.git
+```
+
+Navigate into the project's root directory via your terminal.
+
+In your terminal, navigate into the frontend/ directory and run each of the following commands in separate terminal sessions of the frontend/ directory
+
+```bash
+make tailwind
+```
+
+```bash
+make templ
+```
+
+```bash
+make run
+```
+
+In a separate terminal session, navigate into the backend/ directory and run the following command
+
+```bash
+make run
+```
+
+Yippee! The project is now up and running on your device
+
+You can now navigate to your browser and open [localhost](`http://localhost:8080`) and explore to your heart's fill!
+
 ## Andika API
 
 Andika builds on a CLI version control system I had built accessible at [VCS CLI](https://github.com/adammwaniki/vcs-cli).
@@ -33,7 +74,9 @@ Below is a chart of the endpoints that exist in the current project and how they
 | `delete <file>`                               | `DELETE`    | `/api/v1/notes/{id}`                        | –                                                   | `{ "message": "note deleted successfully", "id": "...", "name": "..." }`  |
 | `help`                                        | `GET`       | `/api/v1/help`                              | –                                                   | `{ "message": "...", "commands": [...] }`                                 |
 
-### Running Locally (Quickstart)
+> All notes are identified by UUIDs, and all endpoints are prefixed with /api/v1/
+
+### Running Locally
 
 In your terminal, navigate to the backend/ directory and run `go run main.go` or use `air` for hot reloading.
 
